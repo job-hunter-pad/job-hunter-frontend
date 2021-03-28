@@ -12,6 +12,7 @@
                 <mat-label>E-mail</mat-label>
                 <input matInput placeholder="name@example.com" [formControlName]="'email'" required>
                 <mat-error *ngIf="loginForm.get('email').errors?.required">You must complete this field</mat-error>
+                <mat-error *ngIf="loginForm.get('email').errors?.email">Invalid e-mail address</mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -22,11 +23,12 @@
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="loginForm.get('password').errors?.required">You must complete this field</mat-error>
+                <mat-error *ngIf="loginForm.get('password').errors?.minlength">Must be at least 6 characters long</mat-error>
             </mat-form-field>
             
             <button id="login-button" (click)="onSubmit()" mat-raised-button color="primary">Login</button>
 
-            <mat-error *ngIf="invalidCredentials" class="invalid-credentials-label" fxLayout="row" fxLayoutAlign="space-around center">Invalid credentials</mat-error>
+            <mat-error *ngIf="error" class="invalid-credentials-label" fxLayout="row" fxLayoutAlign="space-around center">{{errorMessage}}</mat-error>
 
             <a class="sign-up-label" [routerLink]="['/register']" fxLayout="row" fxLayoutAlign="space-around center">New here? Sign up!</a>
 

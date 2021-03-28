@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   hide = true;
   usedEmail = false; 
-  passwordsDontMatch = false;
+  errorMessage;
 
   constructor( 
     private formBuilder: FormBuilder,
@@ -27,28 +27,47 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       userType: ['', [Validators.required]]
-    });
+    }, {
+		validator: this.matchPasswordsValidator('password', 'confirmPassword')
+	});
   }
 
   onSubmit() {
-
-    if(this.matchPasswords(this.registerForm.get('password'), this.registerForm.get('confirmPassword'))) {
-      this.authService.register
-      ( this.registerForm.get('name').value, 
-        this.registerForm.get('email').value,
-        this.registerForm.get('password').value,
-        this.registerForm.get('userType').value
-      ).subscribe( res => {
-        //if(emailul nu e deja folosit) this.router.navigate.(['/undeva']);
-        //else 
-          this.usedEmail = true;
-      })
+    if(this.registerForm.valid) {
+        this.authService.register
+        ( this.registerForm.get('name').value, 
+          this.registerForm.get('email').value,
+          this.registerForm.get('password').value,
+          this.registerForm.get('userType').value
+        ).subscribe( 
+          (res:any) => {
+          if(res.success) {
+            this.router.navigate(['']);
+          }
+          else {
+			this.errorMessage = res.fail_message;
+            this.usedEmail = true;
+          }
+        });
     }
-    else
-      this.passwordsDontMatch = true;
   }
 
-  matchPasswords(password, confirmPassword) {
-    return password === confirmPassword;
+  matchPasswordsValidator(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
   }
 }

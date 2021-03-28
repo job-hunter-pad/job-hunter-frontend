@@ -1,7 +1,6 @@
 @import "../../../custom-theme-app.scss";
 
 .register-card {
-  background-color: mat-color($custom-theme-primary, lighter) !important;
   margin-top: 3%;
 }
 
@@ -26,7 +25,6 @@
 
 @media (min-width: 1440px) {
   .register-card {
-    background-color: mat-color($custom-theme-primary, lighter) !important;
     margin-top: 10%;
   }
 }

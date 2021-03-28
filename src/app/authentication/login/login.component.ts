@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   hide = true;
-  invalidCredentials = false;
+  error = false;
+  errorMessage;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,11 +29,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
-      res => {
-        this.router.navigate(['/home']);
-        //invalidCredentials = true;
-      }
-    )
+    if(this.loginForm.valid) {
+      this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
+        (res:any) => {
+          if(res.success) {
+            this.router.navigate(['']);
+          }
+          else {
+            this.errorMessage = res.fail_message;
+            this.error = true;
+          }
+        }
+      );   
+    }
   }
 }
