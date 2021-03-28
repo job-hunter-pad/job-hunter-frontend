@@ -1,0 +1,25 @@
+@import "../../../custom-theme-app.scss";
+
+.login-card {
+  background-color: mat-color($custom-theme-primary, lighter) !important;
+  margin-top: 10%;
+}
+
+.sign-up-label {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.sign-up-label:hover {
+  color: mat-color($custom-theme-primary);
+}
+
+#login-button {
+  margin-top: 10px;
+}
+
+.invalid-credentials-label {
+  margin-top: 10px;
+}
