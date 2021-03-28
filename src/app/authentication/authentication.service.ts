@@ -10,6 +10,7 @@ export class AuthenticationService {
 
   private loginUrl = "/api/auth/login";
   private registerUrl = "/api/auth/register";
+  private validateEmailUrl = 'api/auth/validateEmail';
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +25,13 @@ export class AuthenticationService {
     return this.http.post(
       this.registerUrl, 
       JSON.stringify({name: name, email: email, password: password, userType: userType})
+    );
+  }
+
+  validateEmail(token) {
+    return this.http.post(
+      this.validateEmailUrl,
+      JSON.stringify({login_token: token})
     );
   }
 }
