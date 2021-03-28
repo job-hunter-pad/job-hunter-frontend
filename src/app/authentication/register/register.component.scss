@@ -1,0 +1,32 @@
+@import "../../../custom-theme-app.scss";
+
+.register-card {
+  background-color: mat-color($custom-theme-primary, lighter) !important;
+  margin-top: 3%;
+}
+
+.login-label {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.login-label:hover {
+  color: mat-color($custom-theme-primary);
+}
+
+#register-button {
+  margin-top: 10px;
+}
+
+.email-used {
+  margin-top: 10px;
+}
+
+@media (min-width: 1440px) {
+  .register-card {
+    background-color: mat-color($custom-theme-primary, lighter) !important;
+    margin-top: 10%;
+  }
+}
