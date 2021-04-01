@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { delay } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication.service';
 
 
@@ -12,14 +11,12 @@ import { AuthenticationService } from '../authentication.service';
 export class ValidateEmailComponent implements OnInit {
 
   token;
-  message; 
+  message = 'Waiting for validation'; 
   spin = true;
 
   constructor(private route:ActivatedRoute, private authService:AuthenticationService) { }
 
   ngOnInit(): void {
-    delay(1000);
-    this.spin = false;
     this.token = this.route.snapshot.paramMap.get('token');
     this.authService.validateEmail(this.token).subscribe(
       (res:any) => {
