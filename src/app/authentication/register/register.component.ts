@@ -12,12 +12,12 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
   hide = true;
-  usedEmail = false; 
+  usedEmail = false;
   errorMessage;
 
-  constructor( 
+  constructor(
     private formBuilder: FormBuilder,
-    private router:Router,
+    private router: Router,
     private authService: AuthenticationService) { }
 
   ngOnInit(): void {
@@ -28,27 +28,28 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       userType: ['', [Validators.required]]
     }, {
-		validator: this.matchPasswordsValidator('password', 'confirmPassword')
-	});
+      validator: this.matchPasswordsValidator('password', 'confirmPassword')
+    });
   }
 
   onSubmit() {
-    if(this.registerForm.valid) {
-        this.authService.register
-        ( this.registerForm.get('name').value, 
+    if (this.registerForm.valid) {
+      this.authService.register
+        (this.registerForm.get('name').value,
           this.registerForm.get('email').value,
           this.registerForm.get('password').value,
           this.registerForm.get('userType').value
-        ).subscribe( 
-          (res:any) => {
-          if(res.success) {
-            this.router.navigate(['']);
-          }
-          else {
-			this.errorMessage = res.fail_message;
-            this.usedEmail = true;
-          }
-        });
+        ).subscribe(
+          (res: any) => {
+            console.log(res)
+            if (res.success) {
+              this.router.navigate(['']);
+            }
+            else {
+              this.errorMessage = res.fail_message;
+              this.usedEmail = true;
+            }
+          });
     }
   }
 

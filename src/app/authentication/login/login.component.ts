@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 
@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
-        (res:any) => {
-          if(res.success) {
+        (res: any) => {
+          if (res.success) {
             this.router.navigate(['']);
           }
           else {
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
             this.error = true;
           }
         }
-      );   
+      );
     }
   }
 }
