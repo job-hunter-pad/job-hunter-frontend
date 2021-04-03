@@ -27,3 +27,11 @@ $custom-theme: mat-light-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($custom-theme);
+
+:root {
+  --primary-color: #{mat-color($custom-theme-primary)};
+  --primary-color-lighter : #{mat-color($custom-theme-primary, lighter)};
+  --primary-color-darker : #{mat-color($custom-theme-primary, darker)};
+  --accent-color: #{mat-color($custom-theme-accent)};
+  --warn-color : #{mat-color($custom-theme-warn)};
+};
