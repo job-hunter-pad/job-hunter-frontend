@@ -34,9 +34,8 @@ export class AuthenticationService {
   validateEmail(token) {
     return this.http.post(
       this.validateEmailUrl,
-      JSON.stringify({ login_token: token }), {
+      JSON.stringify({ account_key: token }), {
       headers: contentHeaders
-    }
-    );
+    });
   }
 }

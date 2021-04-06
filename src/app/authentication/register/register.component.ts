@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
           (res: any) => {
             console.log(res)
             if (res.success) {
-              this.router.navigate(['']);
+              this.router.navigate(['/login']);
             }
             else {
               this.errorMessage = res.fail_message;
