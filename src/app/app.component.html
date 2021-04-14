@@ -1,4 +1,43 @@
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar> -->
 
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a routerLink="/">Job Hunter</a>
+    <span fxFlex></span>
+    <div>
+
+      <button mat-button >
+        <mat-icon class="margin-right-8">home</mat-icon>
+          <span class="nav-bar-text">Home</span>
+      </button>
+
+      <button mat-button >
+        <mat-icon class="margin-right-8">edit</mat-icon>
+        <span class="nav-bar-text">Create Job Offer</span>
+      </button>
+
+      <button mat-button >
+        <mat-icon class="margin-right-8">person</mat-icon>
+         <span class="nav-bar-text">View Profile</span>
+      </button>
+
+      <button mat-button >
+        <mat-icon class="margin-right-8">logout</mat-icon>
+        <span class="nav-bar-text">Logout</span>
+      </button>
+  
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+  
 <div>
   <router-outlet></router-outlet>
 </div>

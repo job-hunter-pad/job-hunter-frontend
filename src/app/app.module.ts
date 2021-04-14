@@ -10,16 +10,20 @@ import { LoginComponent } from './authentication/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatCardModule } from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { RegisterComponent } from './authentication/register/register.component';
 import { ValidateEmailComponent } from './authentication/validate-email/validate-email.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './home/home.component';
+import { EmployerProfileComponent } from './profiles/employer-profile/employer-profile.component';
+import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     ValidateEmailComponent,
-    HomeComponent
+    HomeComponent,
+    EmployerProfileComponent,
+    FreelancerProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,9 @@ import { HomeComponent } from './home/home.component';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
