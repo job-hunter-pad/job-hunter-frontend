@@ -20,6 +20,9 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { ValidateEmailComponent } from './authentication/validate-email/validate-email.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './home/home.component';
+import { ListElementComponent } from './home/list-element/list-element.component';
+import {MatListModule} from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     ValidateEmailComponent,
-    HomeComponent
+    HomeComponent,
+    ListElementComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { HomeComponent } from './home/home.component';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
