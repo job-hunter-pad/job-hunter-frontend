@@ -1,0 +1,12 @@
+.job{
+    align-items: flex-start;
+}
+.job-apply-button{
+    align-self: flex-end;
+    align-content: right;
+}
+.apply-button{
+    width: 100px;
+    border-radius: 10px;
+    color: var(--primary-color);
+}

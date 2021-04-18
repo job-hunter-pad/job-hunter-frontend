@@ -1,13 +1,9 @@
 
 <div class="homepage" ng-cloak repeat>
+    <h1> Available Jobs </h1>
     <mat-selection-list class="job-list" flex>
         <mat-selection-option class="list-item" *ngFor="let job of jobs" [value]="job" >
-            <mat-card class="job-item">
-                <md-card-content>
-                         <h3>{{ job.title }}</h3> 
-                         <p>Employer : {{job.employer}}</p>
-                </md-card-content>
-            </mat-card>
+            <app-list-element [value]="job"></app-list-element>
         </mat-selection-option>
     </mat-selection-list>
     <mat-paginator #paginator [pageSize]="10"

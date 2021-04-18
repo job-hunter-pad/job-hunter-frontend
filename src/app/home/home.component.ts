@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import {ListElementComponent} from './list-element/list-element.component'
+import {JOBS} from '../mock-jobs'
 
 @Component({
   selector: 'app-home',
@@ -13,15 +15,5 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  jobs : {title:string, employer:string}[]=[
-    { "title" : "Angajez ajutor bucatar", "employer":"Adrian Verde"},
-    { "title" : "Caut mecanic", "employer":"Vasile Petrovan"},
-    { "title" : "Site Web (salariu atractiv)", "employer":"MediaX"},
-    { "title" : "Babysiter", "employer":"Cosmina Lof"},
-    { "title" : "Angajez ajutor bucatar", "employer":"Adrian Verde"},
-    { "title" : "Caut mecanic", "employer":"Vasile Petrovan"},
-    { "title" : "Site Web (salariu atractiv)", "employer":"MediaX"},
-    { "title" : "Babysiter", "employer":"Cosmina Lof"}
-  ]
-
+  jobs = JOBS
 }
