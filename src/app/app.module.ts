@@ -21,9 +21,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { RegisterComponent } from './authentication/register/register.component';
 import { ValidateEmailComponent } from './authentication/validate-email/validate-email.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+import { BarRatingModule } from "ngx-bar-rating";
+
 import { HomeComponent } from './home/home.component';
 import { EmployerProfileComponent } from './profiles/employer-profile/employer-profile.component';
 import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
+import { ReviewArrayComponent } from './profiles/review-array/review-array.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +39,8 @@ import { FreelancerProfileComponent } from './profiles/freelancer-profile/freela
     ValidateEmailComponent,
     HomeComponent,
     EmployerProfileComponent,
-    FreelancerProfileComponent
+    FreelancerProfileComponent,
+    ReviewArrayComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,10 @@ import { FreelancerProfileComponent } from './profiles/freelancer-profile/freela
     MatIconModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule,
+    MatExpansionModule,
+    BarRatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
