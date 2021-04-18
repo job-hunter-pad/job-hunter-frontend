@@ -24,6 +24,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeComponent } from './home/home.component';
 import { EmployerProfileComponent } from './profiles/employer-profile/employer-profile.component';
 import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
+import { ListElementComponent } from './home/list-element/list-element.component';
+import {MatListModule} from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { FreelancerProfileComponent } from './profiles/freelancer-profile/freela
     HomeComponent,
     EmployerProfileComponent,
     FreelancerProfileComponent
+    ListElementComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,8 @@ import { FreelancerProfileComponent } from './profiles/freelancer-profile/freela
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatGridListModule
+    MatListModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
