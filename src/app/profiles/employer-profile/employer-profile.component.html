@@ -1,0 +1,103 @@
+<mat-tab-group mat-stretch-tabs class="tabs" animationDuration="0ms">
+    <mat-tab label="General Information">
+        <div *ngIf="showUserNotFoundError">
+            <mat-card>
+                User Not Found
+            </mat-card>
+        </div>
+        <div class="gen-info-div" *ngIf="employerProfile"> 
+            <mat-card class="parent-card" fxFlex>
+                <mat-grid-list cols="5" rowHeight="20vh"> 
+                    <mat-grid-tile 
+                    [colspan]="5"
+                    [rowspan]="1">
+                        <mat-card class="mat-card-interior" fxLayout="row" fxLayoutAlign="space-between center">
+                            <div fxLayout="row" fxLayoutAlign="space-around center">
+                                <img class="profile-picture" src="../../../assets/images/profile.jpg">
+                                <div fxLayout="column" fxLayoutAlign="space-around start">
+                                    <mat-card-title>{{employerProfile.name}}</mat-card-title>
+                                    <mat-card-subtitle>Employer</mat-card-subtitle>
+                                </div>
+                            </div>
+                            <div fxLayout="column" fxLayoutAlign="space-evenly center">
+                                <button mat-raised-button class="edit_save" color="primary">Edit Profile</button>
+                                <button mat-raised-button disabled="true" class="edit_save" color="primary">Save Changes</button>
+                            </div>
+                        </mat-card>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile 
+                    [colspan]="3"
+                    [rowspan]="2">
+                        <mat-card class="mat-card-interior reviews"  fxLayout="column" fxLayoutAlign="space-bewteen start">
+                            <mat-card-header>
+                                <mat-card-title class="info-element-title">Reviews</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="rev-array">
+                                <app-review-array class="rev-array" [reviews]="employerProfile.reviews"></app-review-array>
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile 
+                    [colspan]="2"
+                    [rowspan]="2">
+
+                        <mat-card class="mat-card-interior" fxLayout="column" fxLayoutAlign="start start">
+                            <mat-card-header fxLayoutAlign="start">
+                                <mat-card-title class="info-element-title">Personal Information</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <div class="gen-info" fxLayout="column" fxLayoutAlign="space-around start">
+                                    <div fxLayout="row" class="info-line">
+                                        <mat-card-subtitle class="info-element-row">
+                                            E-mail:
+                                        </mat-card-subtitle>
+                                        <div>
+                                            {{employerProfile.email}}
+                                        </div>
+                                    </div>
+                    
+                                    <div fxLayout="row" class="info-line">
+                                        <mat-card-subtitle class="info-element-row">
+                                            Phone number:
+                                        </mat-card-subtitle>
+                                        <div>
+                                            {{employerProfile.phoneNumber}}
+                                        </div>
+                                    </div>
+                    
+                                    <div fxLayout="row" class="info-line">
+                                        <mat-card-subtitle class="info-element-row">
+                                            Location:
+                                        </mat-card-subtitle>
+                                        <div>
+                                            {{employerProfile.location}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                <mat-card fxLayout="column" fxLayoutAlign="space-between start">
+                    <mat-card-header fxLayoutAlign="start">
+                        <mat-card-title class="info-element-title">Description</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="desc-div">
+                            {{employerProfile.description}}
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Job Offers">
+        <div *ngIf="employerProfile">
+            Something here
+        </div>
+    </mat-tab>
+</mat-tab-group>

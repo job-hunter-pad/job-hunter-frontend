@@ -1,0 +1,67 @@
+@import "../../../custom-theme-app.scss";
+
+.tabs {
+  background-color: white;
+}
+
+.gen-info-div {
+  background: url("../../../assets/images/fundal1.jpg") repeat-y center;
+  background-position: center center;
+  min-height: calc(100vh - 113px);
+}
+
+.parent-card {
+  margin-left: 10vh;
+  margin-right: 10vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.mat-card-interior {
+  width: 99.8%;
+  height: 90%;
+  border-radius: 0%;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 16vh;
+  margin-left: 3vh;
+  margin-right: 4vh;
+}
+
+.edit_save {
+  margin: 1vh;
+  width: 128px;
+}
+
+.reviews {
+  overflow-y: auto;
+}
+
+.info-element-title {
+  margin-top: 4px;
+  margin-bottom: 2vh !important;
+}
+
+.info-element-row {
+  font-weight: 800;
+  margin-left: 16px;
+  margin-right: 10px;
+}
+
+.desc-div {
+  margin-left: 16px;
+}
+
+.gen-info {
+  margin-top: 2vh !important;
+}
+
+.info-line {
+  margin-top: 5px;
+}
+
+.rev-array {
+  width: 100%;
+}
