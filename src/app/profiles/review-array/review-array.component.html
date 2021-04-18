@@ -1,0 +1,14 @@
+<mat-accordion *ngIf="reviews" class="accordion">
+    <mat-expansion-panel *ngFor="let review of reviews">
+        <mat-expansion-panel-header fxLayout="row">
+            <mat-panel-title fxFlex='30'>
+                {{review.reviewerName}}
+            </mat-panel-title>
+            <bar-rating [rate]="review.reviewScore" [max]="5" [readOnly]="true"></bar-rating>
+        </mat-expansion-panel-header>
+        <div fxLayout="column" fxLayoutAlign="start start">
+            <div class="rev-line">  {{review.description}} </div>
+            <!-- <div class="rev-line"> {{ review.date}} </div> -->
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
