@@ -37,7 +37,6 @@ import { ListElementComponent } from './home/list-element/list-element.component
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-
 @NgModule({
   declarations: [
     AppComponent,
