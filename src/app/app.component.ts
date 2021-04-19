@@ -10,7 +10,7 @@ import { AuthenticationService } from './authentication/authentication.service';
 export class AppComponent {
   title = 'job-hunter-frontend';
 
-  constructor(private router: Router, private authService: AuthenticationService) { }
+  constructor(private router: Router, public authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
