@@ -10,34 +10,41 @@
 
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <a routerLink="/">Job Hunter</a>
+    <a *ngIf="(authService.isLoggedIn | async)" routerLink="/">Job Hunter</a>
+    <a *ngIf="!(authService.isLoggedIn | async)">Job Hunter</a>
     <span fxFlex></span>
-    <div>
+    <div *ngIf="(authService.isLoggedIn | async)">
 
       <button mat-button [routerLink]="['/']">
         <mat-icon class="margin-right-8">home</mat-icon>
-          <span class="nav-bar-text">Home</span>
+        <span class="nav-bar-text">Home</span>
       </button>
 
-      <button mat-button >
+      <button mat-button>
         <mat-icon class="margin-right-8">edit</mat-icon>
         <span class="nav-bar-text">Create Job Offer</span>
       </button>
 
-      <button mat-button >
+      <button mat-button (click)="onViewProfileButtonClick()">
         <mat-icon class="margin-right-8">person</mat-icon>
-         <span class="nav-bar-text">View Profile</span>
+        <span class="nav-bar-text">View Profile</span>
       </button>
 
       <button mat-button (click)="onLogoutButtonClick()">
         <mat-icon class="margin-right-8">logout</mat-icon>
         <span class="nav-bar-text">Logout</span>
       </button>
-  
+    </div>
+
+    <div *ngIf="!(authService.isLoggedIn | async)">
+      <button mat-button [routerLink]="['/login']">
+        <mat-icon class="margin-right-8">login</mat-icon>
+        <span class="nav-bar-text">Login</span>
+      </button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-  
+
 <div>
   <router-outlet></router-outlet>
 </div>
