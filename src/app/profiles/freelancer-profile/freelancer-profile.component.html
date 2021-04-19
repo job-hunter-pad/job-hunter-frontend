@@ -1,0 +1,94 @@
+<div class="parent-div" fxLayout="column">
+    <mat-card class="page-card" fxFlex>
+        <!-- <mat-grid-list cols="4" rowHeight="15vh">
+            <mat-grid-tile
+                *ngFor="let tile of tiles"
+                [colspan]="tile.cols"
+                [rowspan]="tile.rows"
+                [style.background]="tile.color">
+            </mat-grid-tile>
+          </mat-grid-list> -->
+
+          <mat-grid-list cols="4" rowHeight="15vh">
+            <mat-grid-tile 
+            [colspan]="4"
+            [rowspan]="1"
+            [style.background]='"pink"'>
+                <mat-card class="mat-card-interior" fxLayout="column" fxLayoutAlign="space-between center">
+                    <mat-card-header fxLayoutAlign="center center">
+                        <mat-card-title>poza si mai ceva</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="module line-clamp">
+                            <p>description</p>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+       
+            <mat-grid-tile 
+            [colspan]="1"
+            [rowspan]="4"
+            [style.background]='"blue"'>
+                <mat-card class="mat-card-interior" fxLayout="column" fxLayoutAlign="space-between center">
+                    <mat-card-header fxLayoutAlign="center center">
+                        <mat-card-title>personal data</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="module line-clamp">
+                            <p>description</p>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+
+            <mat-grid-tile 
+            [colspan]="3"
+            [rowspan]="2"
+            [style.background]='"pink"'>
+                <mat-card class="mat-card-interior" fxLayout="column" fxLayoutAlign="space-between center">
+                    <mat-card-header fxLayoutAlign="center center">
+                        <mat-card-title>descriere</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="module line-clamp">
+                            <p>description</p>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+
+            <mat-grid-tile 
+            [colspan]="3"
+            [rowspan]="2"
+            [style.background]='"pink"'>
+                <mat-card class="mat-card-interior" fxLayout="column" fxLayoutAlign="space-between center">
+                    <mat-card-header fxLayoutAlign="center center">
+                        <mat-card-title>portofoliu</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="module line-clamp">
+                            <p>description</p>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+ 
+            <mat-grid-tile 
+            [colspan]="4"
+            [rowspan]="2"
+            [style.background]='"pink"'>
+                <mat-card class="mat-card-interior" fxLayout="column" fxLayoutAlign="space-between center">
+                    <mat-card-header fxLayoutAlign="center center">
+                        <mat-card-title>rewie</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="module line-clamp">
+                            <p>description</p>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>
+</div>

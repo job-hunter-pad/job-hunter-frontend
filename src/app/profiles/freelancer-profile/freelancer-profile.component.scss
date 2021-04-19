@@ -1,0 +1,31 @@
+.parent-div {
+  min-height: calc(100vh - 64px);
+}
+
+.page-card {
+  margin: 2%;
+  overflow-y: auto;
+}
+
+.mat-card-interior {
+  width: 99%;
+  height: 95%;
+}
+
+.main-profile-photo {
+  max-height: 170px;
+  max-width: 95%;
+  height: 100%;
+  width: auto;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.module {
+  width: 100%;
+  overflow: hidden;
+}

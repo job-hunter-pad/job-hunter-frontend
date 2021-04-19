@@ -4,21 +4,34 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { ValidateEmailComponent } from './authentication/validate-email/validate-email.component';
 import { HomeComponent } from './home/home.component';
+import { EmployerProfileComponent } from './profiles/employer-profile/employer-profile.component';
+import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
   },
-  { path: 'register', 
-    component: RegisterComponent 
+  {
+    path: 'register',
+    component: RegisterComponent
   },
-  { path: 'validateEmail/:token', 
-    component: ValidateEmailComponent 
+  {
+    path: 'validateEmail/:token',
+    component: ValidateEmailComponent
   },
-  { path: '', 
-    component: HomeComponent 
+  {
+    path: '',
+    component: HomeComponent
   },
+  {
+    path: 'employerProfile/:userId',
+    component: EmployerProfileComponent
+  },
+  {
+    path: 'freelancerProfile',
+    component: FreelancerProfileComponent
+  }
 ];
 
 @NgModule({
