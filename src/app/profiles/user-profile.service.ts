@@ -14,7 +14,6 @@ export class UserProfileService {
   constructor(private http: HttpClient) { }
 
   getEmployerProfileById(id) {
-
     return this.http.get(
       this.profileUrl + id,
       {
@@ -24,4 +23,25 @@ export class UserProfileService {
       return jsonProfile
     }));
   }
+
+  updateEmployerProfile(id, name, description, location, phoneNumber) {
+    return this.http.post(
+      this.profileUrl + id + "/update",
+      JSON.stringify({ name: name, description: description, location: location, phoneNumber: phoneNumber }), {
+      headers: contentHeaders
+    });
+  }
+
+  getProfilePhoto(id) {
+    return this.http.get(this.profileUrl + id + "/getPhoto", {
+      responseType: 'blob',
+    });
+  }
+
+  updateProfilePhoto(id, photo) {
+    const formData = new FormData();
+    formData.append("profilePhoto", photo);
+    return this.http.post(this.profileUrl + id + "/updatePhoto", formData);
+  }
+
 }
