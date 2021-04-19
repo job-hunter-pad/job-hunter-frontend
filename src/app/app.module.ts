@@ -12,7 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -23,6 +23,7 @@ import { ValidateEmailComponent } from './authentication/validate-email/validate
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { BarRatingModule } from "ngx-bar-rating";
 
@@ -62,6 +63,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSelectModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    FormsModule,
     MatIconModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
@@ -71,7 +73,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BarRatingModule,
     MatGridListModule,
     MatListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

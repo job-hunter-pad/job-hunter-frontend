@@ -1,27 +1,47 @@
 <mat-tab-group mat-stretch-tabs class="tabs" animationDuration="0ms">
     <mat-tab label="General Information">
-        <div *ngIf="showUserNotFoundError">
-            <mat-card>
+        <mat-card *ngIf="showUserNotFoundError">
+            <mat-card-title>
                 User Not Found
-            </mat-card>
-        </div>
+            </mat-card-title>
+        </mat-card>
+
         <div class="gen-info-div" *ngIf="employerProfile"> 
             <mat-card class="parent-card" fxFlex>
-                <mat-grid-list cols="5" rowHeight="20vh"> 
-                    <mat-grid-tile 
+                <mat-grid-list cols="5" rowHeight="{{rowHeight}}" class="edit"> 
+                    <mat-grid-tile class="photo-tile"
                     [colspan]="5"
                     [rowspan]="1">
                         <mat-card class="mat-card-interior" fxLayout="row" fxLayoutAlign="space-between center">
                             <div fxLayout="row" fxLayoutAlign="space-around center">
-                                <img class="profile-picture" src="../../../assets/images/profile.jpg">
+                                <div fxLayout="column" fxLayoutAlign="space-around center">
+                                    <img *ngIf="imageSrc" class="profile-picture" src="{{imageSrc}}">
+                                    <img *ngIf="!imageSrc" class="profile-picture" src="../../../assets/images/profile.jpg">
+                                    <div *ngIf="isEditing">
+                                        <input #profilePhotoFileInput id="uploadProfilePhoto" mat-button (change)="uploadPhoto($event.target.files)" hidden type="file" accept="image/x-png,image/gif,image/jpeg">
+                                        <button mat-raised-button class="edit_save edit" color="primary" (click)="openProfilePhotoDialog()" fxLayout="row" fxLayoutAlign="space-between center">
+                                            <mat-icon aria-hidden="false" aria-label="Edit Icon">publish</mat-icon>
+                                            <span>Upload Photo</span>
+                                         </button>
+                                    </div>
+                                </div>
                                 <div fxLayout="column" fxLayoutAlign="space-around start">
-                                    <mat-card-title>{{employerProfile.name}}</mat-card-title>
+                                    <mat-card-title *ngIf="!isEditing">{{employerProfile.name}}</mat-card-title>
+                                    <mat-form-field *ngIf="isEditing">
+                                        <input matInput value="{{employerProfile.name}}" [(ngModel)]="employerProfile.name">
+                                    </mat-form-field>
                                     <mat-card-subtitle>Employer</mat-card-subtitle>
                                 </div>
                             </div>
-                            <div fxLayout="column" fxLayoutAlign="space-evenly center">
-                                <button mat-raised-button class="edit_save" color="primary">Edit Profile</button>
-                                <button mat-raised-button disabled="true" class="edit_save" color="primary">Save Changes</button>
+                            <div fxLayout="column" fxLayoutAlign="space-evenly center" *ngIf="ownProfile">
+                                <button mat-raised-button class="edit_save" (click)="editProfile()" [disabled]="isEditing" fxLayout="row" fxLayoutAlign="space-between center" color="primary">
+                                    <mat-icon class="icon" aria-hidden="false" aria-label="Edit Icon">create</mat-icon>
+                                    <span>Edit Profile</span>
+                                </button>
+                                <button mat-raised-button class="edit_save" (click)="saveProfileAndShowSnackbar()" [disabled]="!isEditing" fxLayout="row" fxLayoutAlign="space-between center" color="primary">
+                                    <mat-icon class="icon" aria-hidden="false" aria-label="Save Icon">save</mat-icon>
+                                    <span>Save Changes</span>
+                                </button>
                             </div>
                         </mat-card>
                     </mat-grid-tile>
@@ -59,20 +79,30 @@
                                     </div>
                     
                                     <div fxLayout="row" class="info-line">
-                                        <mat-card-subtitle class="info-element-row">
+                                        <mat-card-subtitle class="info-element-row align-row">
                                             Phone number:
                                         </mat-card-subtitle>
-                                        <div>
+                                        <div class="align-row" *ngIf="!isEditing && employerProfile.phoneNumber">
                                             {{employerProfile.phoneNumber}}
+                                        </div>
+                                        <div *ngIf="isEditing">
+                                            <mat-form-field>
+                                                <input matInput value="{{employerProfile.phoneNumber}}" [(ngModel)]="employerProfile.phoneNumber">
+                                            </mat-form-field>
                                         </div>
                                     </div>
                     
                                     <div fxLayout="row" class="info-line">
-                                        <mat-card-subtitle class="info-element-row">
+                                        <mat-card-subtitle class="info-element-row align-row">
                                             Location:
                                         </mat-card-subtitle>
-                                        <div>
+                                        <div class="align-row" *ngIf="!isEditing && employerProfile.location">
                                             {{employerProfile.location}}
+                                        </div>
+                                        <div *ngIf="isEditing">
+                                            <mat-form-field>
+                                                <input matInput value="{{employerProfile.location}}" [(ngModel)]="employerProfile.location">
+                                            </mat-form-field>
                                         </div>
                                     </div>
                                 </div>
@@ -85,9 +115,14 @@
                     <mat-card-header fxLayoutAlign="start">
                         <mat-card-title class="info-element-title">Description</mat-card-title>
                     </mat-card-header>
-                    <mat-card-content>
-                        <div class="desc-div">
+                    <mat-card-content class="desc-card-content" fxFlex='100'>
+                        <div class="desc-div" *ngIf="!isEditing && employerProfile.description">
                             {{employerProfile.description}}
+                        </div>
+                        <div class="desc-div" *ngIf="isEditing"  fxLayout="row">
+                            <mat-form-field fxFlex>
+                                <textarea name="description" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10" matInput placeholder="Complete this area with your description" [(ngModel)]="employerProfile.description"></textarea>
+                            </mat-form-field>
                         </div>
                     </mat-card-content>
                 </mat-card>
