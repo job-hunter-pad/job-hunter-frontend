@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +36,8 @@ import { ReviewArrayComponent } from './profiles/review-array/review-array.compo
 import { ListElementComponent } from './home/list-element/list-element.component';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AuthInterceptor } from './http-interceptor';
+import { AuthGuard } from './shared/auth-guard';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
