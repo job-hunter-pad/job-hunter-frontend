@@ -6,6 +6,7 @@ import { ValidateEmailComponent } from './authentication/validate-email/validate
 import { HomeComponent } from './home/home.component';
 import { EmployerProfileComponent } from './profiles/employer-profile/employer-profile.component';
 import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
+import { AuthGuard } from './shared/auth-guard';
 
 const routes: Routes = [
   {
@@ -22,15 +23,18 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'employerProfile/:userId',
-    component: EmployerProfileComponent
+    component: EmployerProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'freelancerProfile',
-    component: FreelancerProfileComponent
+    component: FreelancerProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
