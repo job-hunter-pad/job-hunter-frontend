@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { ListElementComponent } from './list-element/list-element.component'
+import { JobsService } from '../jobs/jobs.service';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +10,23 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  jobs = [];
+  displayedJobs;
+
+  constructor(private jobService: JobsService) { }
 
   ngOnInit(): void {
+    this.jobService.getJobs().subscribe(jobArray => {
+      this.jobs = jobArray; this.displayedJobs = jobArray;
+      this.showJobs({ pageIndex: 0, pageSize: 10 });
+    })
   }
 
-  jobs : {title:string, employer:string}[]=[
-    { "title" : "Angajez ajutor bucatar", "employer":"Adrian Verde"},
-    { "title" : "Caut mecanic", "employer":"Vasile Petrovan"},
-    { "title" : "Site Web (salariu atractiv)", "employer":"MediaX"},
-    { "title" : "Babysiter", "employer":"Cosmina Lof"},
-    { "title" : "Angajez ajutor bucatar", "employer":"Adrian Verde"},
-    { "title" : "Caut mecanic", "employer":"Vasile Petrovan"},
-    { "title" : "Site Web (salariu atractiv)", "employer":"MediaX"},
-    { "title" : "Babysiter", "employer":"Cosmina Lof"}
-  ]
+  showJobs(event) {
+    console.log(event);
+    var start = event.pageIndex*event.pageSize;
+    var end = start + event.pageSize;
+    this.displayedJobs = this.jobs.slice(start , end)
+  }
 
 }

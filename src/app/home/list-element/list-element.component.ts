@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import {HomeComponent} from '../home.component'
+import {Job} from '../../job'
 
 @Component({
   selector: 'app-list-element',
@@ -11,5 +13,8 @@ export class ListElementComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @Input()
+  jobValue;
 
 }
