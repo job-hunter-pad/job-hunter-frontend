@@ -1,18 +1,19 @@
 <mat-card class="job" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="3px">
     <mat-card-title class="job-title">
-        <h3>{{job.job_name}}</h3>
+       {{jobValue.job_name}}
     </mat-card-title>
     <mat-card-subtitle class="job-employer_name">
-        <h3>{{job.employer_name}}</h3>
+       {{jobValue.employer_name}}
     </mat-card-subtitle>
-    <mat-card-content class="job-description">
-        <p class="job-description">{{job.job_description}}</p>
+    <mat-card-content class="job-salary">
+        <p class="job-salary">Salary: {{jobValue.job_salary}}</p>
     </mat-card-content>
     <mat-card-subtitle class="job-date">
-        <h4>{{job.date}}</h4>
+        {{jobValue.date}}
     </mat-card-subtitle>
    <mat-card-actions class="job-apply-button">
-         <button id="apply-button" mat-raised-button color="primary">Apply</button>
+         <button class="job-button" mat-stroked-button color="primary">Job details</button>
+         <button class="apply-button" mat-raised-button color="primary">Apply</button>
    </mat-card-actions>
 </mat-card>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import {ListElementComponent} from './list-element/list-element.component'
-import {JOBS} from '../mock-jobs'
+import { ListElementComponent } from './list-element/list-element.component'
+import { JobsService } from '../jobs/jobs.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,23 @@ import {JOBS} from '../mock-jobs'
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  jobs = [];
+  displayedJobs;
+
+  constructor(private jobService: JobsService) { }
 
   ngOnInit(): void {
+    this.jobService.getJobs().subscribe(jobArray => {
+      this.jobs = jobArray; this.displayedJobs = jobArray;
+      this.showJobs({ pageIndex: 0, pageSize: 10 });
+    })
   }
 
-  jobs = JOBS
+  showJobs(event) {
+    console.log(event);
+    var start = event.pageIndex*event.pageSize;
+    var end = start + event.pageSize;
+    this.displayedJobs = this.jobs.slice(start , end)
+  }
+
 }

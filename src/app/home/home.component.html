@@ -1,12 +1,15 @@
-
-<div class="homepage" ng-cloak repeat>
-    <h1> Available Jobs </h1>
-    <mat-selection-list class="job-list" flex>
-        <mat-selection-option class="list-item" *ngFor="let job of jobs" [value]="job" >
-            <app-list-element [value]="job"></app-list-element>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="parent-card"  >
+    <mat-card-title> Available Jobs </mat-card-title>
+    <mat-card-content>
+      <mat-selection-list class="job-list" fxLayout="column" fxLayoutAlign="space-around stretch" >
+        <mat-selection-option class="list-item" *ngFor="let job of displayedJobs" [value]="job">
+          <app-list-element [jobValue]="job"></app-list-element>
         </mat-selection-option>
-    </mat-selection-list>
-    <mat-paginator #paginator [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25]">
+      </mat-selection-list>
+      <mat-paginator #paginator [length]="jobs.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"
+        (page)="showJobs($event)">
       </mat-paginator>
+    </mat-card-content>
+  </mat-card>
 </div>
