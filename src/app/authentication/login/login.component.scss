@@ -1,5 +1,5 @@
 .login-card {
-  margin-top: 10%;
+  margin-top: 7.5vh;
 }
 
 .sign-up-label {
@@ -19,4 +19,10 @@
 
 .invalid-credentials-label {
   margin-top: 10px;
+}
+
+@media (min-width: 1440px) {
+  .login-card {
+    margin-top: 14.5vh;
+  }
 }

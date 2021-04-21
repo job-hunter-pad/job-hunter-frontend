@@ -58,7 +58,7 @@ export class EmployerProfileComponent {
 
   editProfile() {
     this.isEditing = true;
-    this.rowHeight = "25vh";
+    this.rowHeight = "30vh";
   }
 
   saveProfileAndShowSnackbar() {
