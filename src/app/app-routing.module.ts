@@ -4,6 +4,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { ValidateEmailComponent } from './authentication/validate-email/validate-email.component';
 import { HomeComponent } from './home/home.component';
+import { CreateJobOfferFormComponent } from './jobs/create-job-offer-form/create-job-offer-form.component';
 import { EmployerProfileComponent } from './profiles/employer-profile/employer-profile.component';
 import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
 import { AuthGuard } from './shared/auth-guard';
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: 'freelancerProfile',
     component: FreelancerProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'createJob',
+    component: CreateJobOfferFormComponent,
     canActivate: [AuthGuard]
   }
 ];

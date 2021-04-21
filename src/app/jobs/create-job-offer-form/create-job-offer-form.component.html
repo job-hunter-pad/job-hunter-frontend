@@ -1,0 +1,50 @@
+<form fxLayout="row" fxLayoutAlign="center center" [formGroup]="jobOfferForm" class="create-job-form-card">
+    <mat-card fxFlex="30" fxFlex.lt-sm="100" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px">
+        <mat-card-title>Create Job Offer</mat-card-title>
+
+        <mat-card-content fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="16px" fxFlexFill>
+            <mat-form-field>
+                <input matInput name="jobName" placeholder="Job Name" formControlName="jobName">
+                <mat-error>You must complete this field</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="number" name="hourSalaryAmount" placeholder="Salary Per Hour"
+                    formControlName="hourSalaryAmount" min="1">
+                <span matSuffix>$</span>
+                <mat-error *ngIf="hourSalaryAmount.errors?.required">You must complete this field</mat-error>
+                <mat-error *ngIf="hourSalaryAmount.errors?.min">Minimum salary per hour is 1$</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput name="jobDescription" rows="4" placeholder="Job Description"
+                    formControlName="jobDescription"></textarea>
+                <mat-error>You must complete this field</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Job Skills</mat-label>
+                <mat-chip-list #chipList aria-label="Skill selection">
+                    <mat-chip class="mat-chip-selected" *ngFor="let skill of skills" (removed)="remove(skill)">
+                        {{skill}}
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </mat-chip>
+
+                    <input #skillInput [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" matInput name="jobSkills"
+                        placeholder="New Skill..." formControlName="jobSkills">
+                </mat-chip-list>
+
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="optionSelected($event)">
+                    <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+                        {{skill}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <button class="create-job-button" mat-raised-button [disabled]="jobOfferForm.invalid"
+                (click)="onCreateJobButtonClick()" color="primary" fxFlex>Create Job</button>
+
+        </mat-card-content>
+    </mat-card>
+</form>
