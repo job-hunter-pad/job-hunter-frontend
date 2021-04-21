@@ -24,6 +24,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { BarRatingModule } from "ngx-bar-rating";
 
@@ -38,6 +40,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthInterceptor } from './http-interceptor';
 import { AuthGuard } from './shared/auth-guard';
+import { CreateJobOfferFormComponent } from './jobs/create-job-offer-form/create-job-offer-form.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { AuthGuard } from './shared/auth-guard';
     EmployerProfileComponent,
     FreelancerProfileComponent,
     ReviewArrayComponent,
-    ListElementComponent
+    ListElementComponent,
+    CreateJobOfferFormComponent
 
   ],
   imports: [
@@ -75,7 +79,9 @@ import { AuthGuard } from './shared/auth-guard';
     MatGridListModule,
     MatListModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatChipsModule,
+    MatAutocompleteModule,
   ],
   providers: [
     AuthGuard,
