@@ -20,6 +20,9 @@ export class AppComponent {
     if (userData.userType == "EMPLOYER") {
       this.router.navigate(['/employerProfile', userData.userId]);
     }
+    if (userData.userType == "FREELANCER") {
+      this.router.navigate(['/freelancerProfile', userData.userId]);
+    }
   }
 
   onLogoutButtonClick() {
