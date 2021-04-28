@@ -34,7 +34,7 @@
                                 <mat-card-subtitle>Freelancer</mat-card-subtitle>
                             </div>
                         </div>
-                        <div fxLayout="column" fxLayoutAlign="space-evenly center" *ngIf="ownProfile">
+                        <div class="buttons" fxLayout="column" fxLayoutAlign="space-evenly center" *ngIf="ownProfile">
                             <button mat-raised-button class="edit_save" (click)="editProfile()" [disabled]="isEditing"
                                 fxLayout="row" fxLayoutAlign="space-between center" color="primary">
                                 <mat-icon class="icon" aria-hidden="false" aria-label="Edit Icon">create</mat-icon>
