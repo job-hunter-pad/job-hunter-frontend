@@ -9,6 +9,6 @@ export class SkillsService {
   constructor() { }
 
   getSkills() {
-    return of(['Fullstack Developer', 'Graphic Designer', 'Backend Developer', 'Frontend Developer']);
+    return of(['Fullstack Development', 'Graphic Design', 'Backend Development', 'Frontend Development', 'Cybersecurity', 'Cloud Computing', 'Machine Learning', 'Networking', 'Big Data', 'Algorithms']);
   }
 }

@@ -19,7 +19,35 @@ export class UserProfileService {
         headers: contentHeaders
       }
     ).pipe(map((jsonProfile: any) => {
-      return jsonProfile
+      return {
+        userId: jsonProfile.userId,
+        email: jsonProfile.email,
+        name: jsonProfile.name,
+        location: jsonProfile.location,
+        description: jsonProfile.description,
+        phoneNumber: jsonProfile.phoneNumber,
+        reviews: jsonProfile.reviews
+      }
+    }));
+  }
+
+  getFreelancerProfileById(id) {
+    return this.http.get(
+      this.profileUrl + id,
+      {
+        headers: contentHeaders
+      }
+    ).pipe(map((jsonProfile: any) => {
+      return {
+        userId: jsonProfile.userId,
+        email: jsonProfile.email,
+        name: jsonProfile.name,
+        location: jsonProfile.location,
+        description: jsonProfile.description,
+        phoneNumber: jsonProfile.phoneNumber,
+        reviews: jsonProfile.reviews,
+        skills: jsonProfile.skills
+      }
     }));
   }
 
@@ -27,6 +55,14 @@ export class UserProfileService {
     return this.http.post(
       this.profileUrl + id + "/update",
       JSON.stringify({ name: name, description: description, location: location, phoneNumber: phoneNumber }), {
+      headers: contentHeaders
+    });
+  }
+
+  updateFreelancerProfile(id, name, description, location, phoneNumber, skills) {
+    return this.http.post(
+      this.profileUrl + id + "/update",
+      JSON.stringify({ name: name, description: description, location: location, phoneNumber: phoneNumber, skills: skills }), {
       headers: contentHeaders
     });
   }
