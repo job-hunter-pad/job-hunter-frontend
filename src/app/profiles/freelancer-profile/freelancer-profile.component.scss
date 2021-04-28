@@ -1,31 +1,116 @@
-.parent-div {
-  min-height: calc(100vh - 64px);
+.tabs {
+  background-color: white;
 }
 
-.page-card {
-  margin: 2%;
+.gen-info-div {
+  background: url("../../../assets/images/fundal1.jpg") repeat-y center;
+  background-position: center center;
+  min-height: calc(100vh - 113px);
+}
+
+.parent-card {
+  margin-left: 10vh;
+  margin-right: 10vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.profile-picture {
+  width: 16vh;
+  height: 16vh;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 3vh;
+  margin-right: 3vh;
+}
+
+.edit_save {
+  margin: 1vh;
+  width: 144px;
+}
+
+.reviews {
   overflow-y: auto;
 }
 
-.mat-card-interior {
-  width: 99%;
-  height: 95%;
+.info-element-title {
+  margin-top: 4px;
+  margin-bottom: 2vh !important;
 }
 
-.main-profile-photo {
-  max-height: 170px;
-  max-width: 95%;
-  height: 100%;
-  width: auto;
+.info-element-row {
+  font-weight: 800;
+  margin-left: 18px;
+  margin-right: 18px;
 }
 
-.line-clamp {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+.desc-div {
+  margin-left: 16px;
 }
 
-.module {
+.gen-info {
+  margin-top: 2vh !important;
+  width: 98%;
+}
+
+.rev-array {
+  width: 95%;
+  margin-left: 2%;
+  margin-top: -16px;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.desc-card-content {
   width: 100%;
-  overflow: hidden;
+}
+
+.desc-div {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.edit {
+  margin-top: 1vh;
+}
+
+.chip-box {
+  margin-top: 20px !important;
+}
+
+.divider {
+  margin-left: 2% !important;
+  margin-right: 2% !important;
+  width: 95% !important;
+}
+
+.rev-div {
+  height: 300px;
+}
+
+.list-item {
+  align-content: stretch;
+  padding: 10px;
+}
+
+.job-item {
+  align-content: stretch;
+}
+
+.align-skills {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+.jobs {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.buttons {
+  margin-right: 1.5%;
 }

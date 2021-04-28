@@ -5,134 +5,158 @@
                 User Not Found
             </mat-card-title>
         </mat-card>
-
-        <div class="gen-info-div" *ngIf="employerProfile"> 
+        <div class="gen-info-div" *ngIf="employerProfile">
             <mat-card class="parent-card" fxFlex>
-                <mat-grid-list cols="5" rowHeight="{{rowHeight}}" class="edit"> 
-                    <mat-grid-tile class="photo-tile"
-                    [colspan]="5"
-                    [rowspan]="1">
-                        <mat-card class="mat-card-interior" fxLayout="row" fxLayoutAlign="space-between center">
-                            <div fxLayout="row" fxLayoutAlign="space-around center">
-                                <div fxLayout="column" fxLayoutAlign="space-around center">
-                                    <img *ngIf="imageSrc" class="profile-picture" src="{{imageSrc}}">
-                                    <img *ngIf="!imageSrc" class="profile-picture" src="../../../assets/images/profile.jpg">
-                                    <div *ngIf="isEditing">
-                                        <input #profilePhotoFileInput id="uploadProfilePhoto" mat-button (change)="uploadPhoto($event.target.files)" hidden type="file" accept="image/x-png,image/gif,image/jpeg">
-                                        <button mat-raised-button class="edit_save edit" color="primary" (click)="openProfilePhotoDialog()" fxLayout="row" fxLayoutAlign="space-between center">
-                                            <mat-icon aria-hidden="false" aria-label="Edit Icon">publish</mat-icon>
-                                            <span>Upload Photo</span>
-                                         </button>
-                                    </div>
-                                </div>
-                                <div fxLayout="column" fxLayoutAlign="space-around start">
-                                    <mat-card-title *ngIf="!isEditing">{{employerProfile.name}}</mat-card-title>
-                                    <mat-form-field *ngIf="isEditing">
-                                        <input matInput value="{{employerProfile.name}}" [(ngModel)]="employerProfile.name">
-                                    </mat-form-field>
-                                    <mat-card-subtitle>Employer</mat-card-subtitle>
+                <div fxLayout="column" fxLayoutGap="20px">
+                    <div fxLayout="row" fxLayoutAlign="space-between start">
+                        <div fxLayout="row" fxLayoutAlign="space-around center">
+                            <div fxLayout="column" fxLayoutAlign="space-around center">
+                                <img *ngIf="imageSrc" class="profile-picture" src="{{imageSrc}}">
+                                <img *ngIf="!imageSrc" class="profile-picture" src="../../../assets/images/profile.jpg">
+                                <div *ngIf="isEditing">
+                                    <input #profilePhotoFileInput id="uploadProfilePhoto" mat-button
+                                        (change)="uploadPhoto($event.target.files)" hidden type="file"
+                                        accept="image/x-png,image/gif,image/jpeg">
+                                    <button mat-raised-button class="edit_save edit" color="primary"
+                                        (click)="openProfilePhotoDialog()" fxLayout="row"
+                                        fxLayoutAlign="space-between center">
+                                        <mat-icon aria-hidden="false" aria-label="Edit Icon">publish</mat-icon>
+                                        <span>Upload Photo</span>
+                                    </button>
                                 </div>
                             </div>
-                            <div fxLayout="column" fxLayoutAlign="space-evenly center" *ngIf="ownProfile">
-                                <button mat-raised-button class="edit_save" (click)="editProfile()" [disabled]="isEditing" fxLayout="row" fxLayoutAlign="space-between center" color="primary">
-                                    <mat-icon class="icon" aria-hidden="false" aria-label="Edit Icon">create</mat-icon>
-                                    <span>Edit Profile</span>
-                                </button>
-                                <button mat-raised-button class="edit_save" (click)="saveProfileAndShowSnackbar()" [disabled]="!isEditing" fxLayout="row" fxLayoutAlign="space-between center" color="primary">
-                                    <mat-icon class="icon" aria-hidden="false" aria-label="Save Icon">save</mat-icon>
-                                    <span>Save Changes</span>
-                                </button>
+                            <div fxLayout="column" fxLayoutAlign="space-around start">
+                                <mat-card-title *ngIf="!isEditing">{{employerProfile.name}}</mat-card-title>
+                                <mat-form-field *ngIf="isEditing">
+                                    <input matInput value="{{employerProfile.name}}" [(ngModel)]="employerProfile.name">
+                                </mat-form-field>
+                                <mat-card-subtitle>Employer</mat-card-subtitle>
                             </div>
-                        </mat-card>
-                    </mat-grid-tile>
+                        </div>
+                        <div class="buttons" fxLayout="column" fxLayoutAlign="space-evenly center" *ngIf="ownProfile">
+                            <button mat-raised-button class="edit_save" (click)="editProfile()" [disabled]="isEditing"
+                                fxLayout="row" fxLayoutAlign="space-between center" color="primary">
+                                <mat-icon class="icon" aria-hidden="false" aria-label="Edit Icon">create</mat-icon>
+                                <span>Edit Profile</span>
+                            </button>
+                            <button mat-raised-button class="edit_save" (click)="saveProfileAndShowSnackbar()"
+                                [disabled]="!isEditing" fxLayout="row" fxLayoutAlign="space-between center"
+                                color="primary">
+                                <mat-icon class="icon" aria-hidden="false" aria-label="Save Icon">save</mat-icon>
+                                <span>Save Changes</span>
+                            </button>
+                        </div>
+                    </div>
 
-                    <mat-grid-tile 
-                    [colspan]="3"
-                    [rowspan]="2">
-                        <mat-card class="mat-card-interior reviews"  fxLayout="column" fxLayoutAlign="space-bewteen start">
+                    <div>
+                        <mat-divider class="divider"></mat-divider>
+                    </div>
+
+                    <div fxLayout="row" class="rev-div">
+                        <div fxLayout="column" class="reviews" fxLayoutAlign="start start" fxFlex='60'>
                             <mat-card-header>
                                 <mat-card-title class="info-element-title">Reviews</mat-card-title>
                             </mat-card-header>
                             <mat-card-content class="rev-array">
-                                <app-review-array class="rev-array" [reviews]="employerProfile.reviews"></app-review-array>
+                                <app-review-array class="rev-array" [reviews]="employerProfile.reviews">
+                                </app-review-array>
                             </mat-card-content>
-                        </mat-card>
-                    </mat-grid-tile>
+                        </div>
 
-                    <mat-grid-tile 
-                    [colspan]="2"
-                    [rowspan]="2">
+                        <div class="vertical-divider">
+                            <mat-divider class="divider" vertical style="height:250px"></mat-divider>
+                        </div>
 
-                        <mat-card class="mat-card-interior" fxLayout="column" fxLayoutAlign="start start">
+                        <div class="info" fxFlex fxLayout="column" fxLayoutAlign="start start">
                             <mat-card-header fxLayoutAlign="start">
                                 <mat-card-title class="info-element-title">Personal Information</mat-card-title>
                             </mat-card-header>
-                            <mat-card-content>
-                                <div class="gen-info" fxLayout="column" fxLayoutAlign="space-around start">
-                                    <div fxLayout="row" class="info-line">
-                                        <mat-card-subtitle class="info-element-row">
-                                            E-mail:
-                                        </mat-card-subtitle>
-                                        <div>
-                                            {{employerProfile.email}}
-                                        </div>
-                                    </div>
-                    
-                                    <div fxLayout="row" class="info-line">
-                                        <mat-card-subtitle class="info-element-row align-row">
-                                            Phone number:
-                                        </mat-card-subtitle>
-                                        <div class="align-row" *ngIf="!isEditing && employerProfile.phoneNumber">
-                                            {{employerProfile.phoneNumber}}
-                                        </div>
-                                        <div *ngIf="isEditing">
-                                            <mat-form-field>
-                                                <input matInput value="{{employerProfile.phoneNumber}}" [(ngModel)]="employerProfile.phoneNumber">
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-                    
-                                    <div fxLayout="row" class="info-line">
-                                        <mat-card-subtitle class="info-element-row align-row">
-                                            Location:
-                                        </mat-card-subtitle>
-                                        <div class="align-row" *ngIf="!isEditing && employerProfile.location">
-                                            {{employerProfile.location}}
-                                        </div>
-                                        <div *ngIf="isEditing">
-                                            <mat-form-field>
-                                                <input matInput value="{{employerProfile.location}}" [(ngModel)]="employerProfile.location">
-                                            </mat-form-field>
-                                        </div>
+                            <mat-card-content class="gen-info" fxLayout="column" fxLayoutAlign="space-around start"
+                                fxLayoutGap="10px">
+                                <div fxLayout="row">
+                                    <mat-card-subtitle class="info-element-row">
+                                        E-mail:
+                                    </mat-card-subtitle>
+                                    <div>
+                                        {{employerProfile.email}}
                                     </div>
                                 </div>
-                            </mat-card-content>
-                        </mat-card>
-                    </mat-grid-tile>
-                </mat-grid-list>
 
-                <mat-card fxLayout="column" fxLayoutAlign="space-between start">
-                    <mat-card-header fxLayoutAlign="start">
-                        <mat-card-title class="info-element-title">Description</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content class="desc-card-content" fxFlex='100'>
-                        <div class="desc-div" *ngIf="!isEditing && employerProfile.description">
-                            {{employerProfile.description}}
+                                <div fxLayout="row" fxLayoutAlign="start start"
+                                    *ngIf="!isEditing && employerProfile.phoneNumber">
+                                    <mat-card-subtitle class="info-element-row">
+                                        Phone number:
+                                    </mat-card-subtitle>
+                                    <div>
+                                        {{employerProfile.phoneNumber}}
+                                    </div>
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="start end" *ngIf="isEditing">
+                                    <mat-card-subtitle class="info-element-row">
+                                        Phone number:
+                                    </mat-card-subtitle>
+                                    <mat-form-field>
+                                        <input matInput value="{{employerProfile.phoneNumber}}"
+                                            [(ngModel)]="employerProfile.phoneNumber">
+                                    </mat-form-field>
+                                </div>
+
+
+                                <div fxLayout="row" fxLayoutAlign="start start"
+                                    *ngIf="!isEditing && employerProfile.location">
+                                    <mat-card-subtitle class="info-element-row">
+                                        Location:
+                                    </mat-card-subtitle>
+                                    <div>
+                                        {{employerProfile.location}}
+                                    </div>
+                                </div>
+
+                                <div fxLayout="row" fxLayoutAlign="start end" *ngIf="isEditing">
+                                    <mat-card-subtitle class="info-element-row">
+                                        Location:
+                                    </mat-card-subtitle>
+                                    <mat-form-field>
+                                        <input matInput value="{{employerProfile.location}}"
+                                            [(ngModel)]="employerProfile.location">
+                                    </mat-form-field>
+                                </div>
+                            </mat-card-content>
                         </div>
-                        <div class="desc-div" *ngIf="isEditing"  fxLayout="row">
-                            <mat-form-field fxFlex>
-                                <textarea name="description" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10" matInput placeholder="Complete this area with your description" [(ngModel)]="employerProfile.description"></textarea>
-                            </mat-form-field>
-                        </div>
-                    </mat-card-content>
-                </mat-card>
+                    </div>
+
+                    <div>
+                        <mat-divider class="divider"></mat-divider>
+                    </div>
+
+                    <div fxLayout="column" fxLayoutAlign="space-between start">
+                        <mat-card-header fxLayoutAlign="start">
+                            <mat-card-title class="info-element-title">Description</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content class="desc-card-content" fxFlex='100'>
+                            <div class="desc-div" *ngIf="!isEditing && employerProfile.description">
+                                {{employerProfile.description}}
+                            </div>
+                            <div class="desc-div" *ngIf="isEditing" fxLayout="row">
+                                <mat-form-field fxFlex='99'>
+                                    <textarea #message maxlength="1200" name="description" cdkTextareaAutosize
+                                        cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10" matInput
+                                        placeholder="Complete this area with your description"
+                                        [(ngModel)]="employerProfile.description"></textarea>
+                                    <mat-hint align="end">{{message.value.length}} / 1200</mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </mat-card-content>
+                    </div>
+                </div>
             </mat-card>
         </div>
     </mat-tab>
 
-    <mat-tab label="Job Offers">
+    <mat-tab label="Portfolio">
         <div *ngIf="employerProfile">
-            Something here
+            Portfolio here
         </div>
     </mat-tab>
 </mat-tab-group>

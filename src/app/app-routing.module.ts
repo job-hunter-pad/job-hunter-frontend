@@ -33,7 +33,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'freelancerProfile',
+    path: 'freelancerProfile/:userId',
     component: FreelancerProfileComponent,
     canActivate: [AuthGuard]
   },
