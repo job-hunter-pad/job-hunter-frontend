@@ -1,12 +1,18 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-  <mat-card class="parent-card"  >
-    <mat-card-title> Available Jobs </mat-card-title>
+  <mat-card class="parent-card">
+    <div class="job-title">
+      <mat-card-title> Available Jobs </mat-card-title>
+    </div>
     <mat-card-content>
-      <mat-selection-list class="job-list" fxLayout="column" fxLayoutAlign="space-around stretch" >
-        <mat-selection-option class="list-item" *ngFor="let job of displayedJobs" [value]="job">
-          <app-list-element [jobValue]="job"></app-list-element>
-        </mat-selection-option>
-      </mat-selection-list>
+      <div fxLayout="row" fxLayoutAlign="center center" class="search-bar">
+        <input matInput [(ngModel)]="searchText" placeholder="Search Job">
+        <button class="search-button" mat-flat-button color="basic">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of displayedJobs | searchBar :searchText">
+        <app-list-element class="job-item" [jobValue]="job"></app-list-element>
+      </div>
       <mat-paginator #paginator [length]="jobs.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"
         (page)="showJobs($event)">
       </mat-paginator>

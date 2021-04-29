@@ -38,6 +38,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthInterceptor } from './http-interceptor';
 import { AuthGuard } from './shared/auth-guard';
+import { SearchBarPipe } from './home/search-bar/search-bar.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AuthGuard } from './shared/auth-guard';
     EmployerProfileComponent,
     FreelancerProfileComponent,
     ReviewArrayComponent,
-    ListElementComponent
+    ListElementComponent,
+    SearchBarPipe
 
   ],
   imports: [
