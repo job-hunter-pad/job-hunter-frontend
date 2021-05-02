@@ -1,0 +1,24 @@
+<div fxLayout="column" fxLayoutAlign="space-evenly">
+  <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
+    <h1 mat-dialog-title> {{data.job_name}}</h1>
+    <mat-card-subtitle>{{data.employer_name}}</mat-card-subtitle>
+    <div mat-dialog-content class="job-description"> {{data.job_description}}</div>
+    <div>
+      <p class="job-salary">Salary:<B> {{data.job_salary}} $ </B></p>
+    </div>
+    <div class="applicants">
+      <mat-list role="list"  *ngFor="let applicant of applicants">
+        <mat-list-item role="listitem">
+          {{applicant.name}}
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div class="buttons" fxLayout="row" fxLayoutAlign="end end">
+    <div mat-dialog-actions class="buttons">
+      <button mat-button color="secondary">Employer profile</button>
+      <!-- <button mat-button mat-dialog-close>Close</button> -->
+      <button mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
+    </div>
+  </div>
+</div>
