@@ -1,0 +1,17 @@
+<mat-card fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="30px">
+    <mat-card-title class="card-title">{{jobValue.job_name}}</mat-card-title>
+    <mat-card-content fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+        <div>
+            {{jobValue.employer_name}}
+        </div>
+        <div>
+            {{jobValue.date}}
+        </div>
+        <div>
+            {{jobValue.description}}
+        </div>
+    </mat-card-content>
+    <div fxLayoutAlign="end end" fxFlexFill>
+        <button mat-raised-button color="primary" (click)="viewDetailsButtonClick(jobValue)">View Details</button>
+    </div>
+</mat-card>

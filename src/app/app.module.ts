@@ -24,7 +24,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 import { BarRatingModule } from "ngx-bar-rating";
 
@@ -39,9 +44,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthInterceptor } from './http-interceptor';
 import { AuthGuard } from './shared/auth-guard';
+
 import { SearchBarPipe } from './home/search-bar/search-bar.pipe';
 import { JobOfferComponent } from './home/job-offer/job-offer.component';
 import { RenegotiatonComponent } from './home/job-offer/renegotiaton/renegotiaton.component';
+import { CreateJobOfferFormComponent } from './jobs/create-job-offer-form/create-job-offer-form.component';
+import { PastJobsComponent } from './profiles/freelancer-profile/past-jobs/past-jobs.component';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +66,9 @@ import { RenegotiatonComponent } from './home/job-offer/renegotiaton/renegotiato
     SearchBarPipe,
     JobOfferComponent,
     RenegotiatonComponent
+    CreateJobOfferFormComponent,
+    PastJobsComponent
+
 
   ],
   imports: [
@@ -84,6 +96,9 @@ import { RenegotiatonComponent } from './home/job-offer/renegotiaton/renegotiato
     MatPaginatorModule,
     MatSnackBarModule,
     MatDialogModule
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatDividerModule
   ],
   providers: [
     AuthGuard,
