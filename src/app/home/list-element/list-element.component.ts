@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {HomeComponent} from '../home.component'
-import {Job} from '../../job'
+import {JobOfferComponent} from '../job-offer/job-offer.component'
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-element',
@@ -9,7 +9,7 @@ import {Job} from '../../job'
 })
 export class ListElementComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -17,4 +17,11 @@ export class ListElementComponent implements OnInit {
   @Input()
   jobValue;
 
+  openDialog(): void {
+    this.dialog.open(JobOfferComponent,{
+      width: '800px',
+      height: '500px',
+      data:  this.jobValue
+    });
+  }
 }

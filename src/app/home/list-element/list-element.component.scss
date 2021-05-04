@@ -1,11 +1,18 @@
 .job{
     align-items: flex-start;
 }
+.job-title{
+    margin-bottom: 10px;
+}
+.job-employer-name{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.job-salary{
+    margin-bottom: 10px;
+}
 .job-apply-button{
     align-self: flex-end;
     align-content: right;
 }
-.apply-button{
-    width: 100px;
-    margin-left: 30px;
-}
+
