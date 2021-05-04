@@ -65,11 +65,9 @@ import { PastJobsComponent } from './profiles/freelancer-profile/past-jobs/past-
     ListElementComponent,
     SearchBarPipe,
     JobOfferComponent,
-    RenegotiatonComponent
+    RenegotiatonComponent,
     CreateJobOfferFormComponent,
     PastJobsComponent
-
-
   ],
   imports: [
     BrowserModule,
@@ -95,7 +93,7 @@ import { PastJobsComponent } from './profiles/freelancer-profile/past-jobs/past-
     MatListModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
     MatChipsModule,
     MatAutocompleteModule,
     MatDividerModule
