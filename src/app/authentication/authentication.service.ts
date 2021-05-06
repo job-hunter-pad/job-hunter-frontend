@@ -54,6 +54,10 @@ export class AuthenticationService {
 		});
 	}
 
+	resendInvitation(email){
+
+	}
+	
 	validateEmail(token) {
 		return this.http.post(
 			this.validateEmailUrl,

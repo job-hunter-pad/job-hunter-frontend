@@ -43,4 +43,8 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+
+  onSubmitForgotPass(){
+    this.router.navigate(['/resendInvitation']);
+  }
 }

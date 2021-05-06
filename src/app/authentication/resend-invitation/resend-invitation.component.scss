@@ -1,9 +1,9 @@
-.login-card {
-  margin-top: 7.5vh;
+.resend-invitation-card {
+  margin-top: 11vh;
 }
 
 .sign-up-label {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 10px;
   text-decoration: none;
   color: black;
@@ -13,7 +13,14 @@
   color: var(--primary-color);
 }
 
-#login-button {
+.enter-email-label {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: primary;
+}
+
+#forgot-password-button {
   margin-top: 10px;
   margin-bottom: 10px;
 }
