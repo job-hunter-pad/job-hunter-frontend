@@ -4,4 +4,5 @@ export interface Job{
     job_salary: string;
     employer_name: string;
     date: string;
+    employer_id: string;
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import {ResendInvitationComponent} from './authentication/resend-invitation/resend-invitation.component'
 import { ValidateEmailComponent } from './authentication/validate-email/validate-email.component';
 import { HomeComponent } from './home/home.component';
 import { CreateJobOfferFormComponent } from './jobs/create-job-offer-form/create-job-offer-form.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'resendInvitation',
+    component: ResendInvitationComponent
   },
   {
     path: 'validateEmail/:token',
