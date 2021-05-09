@@ -1,9 +1,35 @@
 .job-dialog{
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+.employer-name{
+    text-decoration: none;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
 .job-description{
     display: block;
 }
 .buttons{
     align-self: flex-end;
+}
+.applicants{
+    display: block;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+.mat-list-item{
+    height: 0px;
+}
+.list-item-applicant{
+    display: list-item;
+}
+.apply-form-form{
+    border-spacing: 10px;
+}
+.hours-field{
+    margin-right: 10px;
+}
+.price-field{
+    margin-right: 10px;
 }

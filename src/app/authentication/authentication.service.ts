@@ -55,7 +55,11 @@ export class AuthenticationService {
 	}
 
 	resendInvitation(email){
-
+		return this.http.post(
+			this.registerUrl,
+			JSON.stringify({ email: email }), {
+			headers: contentHeaders
+		});
 	}
 	
 	validateEmail(token) {

@@ -24,7 +24,17 @@ export class ResendInvitationComponent implements OnInit {
   }
   onSubmit() {
     if (this.resendInvitationForm.valid) {
-      this.authService.resendInvitation(this.resendInvitationForm.get('email').value)
+      this.authService.resendInvitation(this.resendInvitationForm.get('email').value).subscribe(
+        (res: any) => {
+          if (res.success) {
+            this.router.navigate(['']);
+          }
+          else {
+            this.errorMessage = res.fail_message;
+            this.error = true;
+          }
+        }
+      );
     }
   }
 }

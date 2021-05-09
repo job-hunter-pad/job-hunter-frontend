@@ -1,24 +1,34 @@
 <div fxLayout="column" fxLayoutAlign="space-evenly">
   <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
     <h1 mat-dialog-title> {{data.job_name}}</h1>
-    <mat-card-subtitle>{{data.employer_name}}</mat-card-subtitle>
+    <a href='/employerProfile/:data.employer_id' class="employer-name">Employer: {{data.employer_name}}</a>
     <div mat-dialog-content class="job-description"> {{data.job_description}}</div>
     <div>
       <p class="job-salary">Salary:<B> {{data.job_salary}} $ </B></p>
     </div>
     <div class="applicants">
-      <mat-list role="list"  *ngFor="let applicant of applicants">
-        <mat-list-item role="listitem">
+      <a>Applicants: {{applicants.length}}</a>
+      <mat-list role="list" *ngFor="let applicant of applicants">
+        <mat-list-item class="list-item-applicant" role="listitem">
           {{applicant.name}}
         </mat-list-item>
       </mat-list>
     </div>
-  </div>
-  <div class="buttons" fxLayout="row" fxLayoutAlign="end end">
-    <div mat-dialog-actions class="buttons">
-      <button mat-button color="secondary">Employer profile</button>
-      <!-- <button mat-button mat-dialog-close>Close</button> -->
+
+  <div class="apply-form" fxLayout="row" fxLayoutAlign="space-evenly center" >
+    <form [formGroup]="applyForm" class="apply-form-form" >
+      <mat-form-field class="hours-field" appearance="outline">
+        <mat-label>Hours</mat-label>
+        <input matInput placeholder="hours" [formControlName]="'hours'" required>
+        <mat-error *ngIf="applyForm.get('hours').errors?.required"> You must complete this field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="price-field" appearance="outline">
+        <mat-label>My price</mat-label>
+        <input matInput placeholder="my price" [formControlName]="'myPrice'">
+      </mat-form-field>
       <button mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
-    </div>
+    </form> 
+  </div>
   </div>
 </div>
