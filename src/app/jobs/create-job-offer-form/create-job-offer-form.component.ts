@@ -51,7 +51,9 @@ export class CreateJobOfferFormComponent implements OnInit {
 			hourSalaryAmount: 1,
 			jobDescription: "",
 			jobName: "",
-			skills: []
+			skills: [],
+			status: "",
+			applications: []
 		}
 
 		this.jobOfferForm = this.fb.group({
@@ -84,6 +86,8 @@ export class CreateJobOfferFormComponent implements OnInit {
 		this.jobOffer.jobDescription = this.jobOfferForm.value.jobDescription;
 		this.jobOffer.hourSalaryAmount = this.jobOfferForm.value.hourSalaryAmount;
 		this.jobOffer.skills = this.skills;
+		this.jobOffer.status = "PENDING";
+		this.jobOffer.applications = [];
 
 		this.jobService.createJobOffer(this.jobOffer).subscribe(res => {
 			this.snackBar.open("Job Offer Created Successfully", "Close", {
