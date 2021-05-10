@@ -1,0 +1,28 @@
+<form [formGroup]="resendInvitationForm" fxLayout="column" fxLayoutAlign="start center">
+
+    <mat-card class="resend-invitation-card">
+
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title> Forgot your password? </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content fxLayout="column" fxLayoutAlign="space-evenly left">
+            <a class="enter-email-label" fxLayout="row" fxLayoutAlign="space-around center">Please enter your email address</a>
+            <mat-form-field appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="name@example.com" [formControlName]="'email'" required>
+                <mat-error *ngIf="resendInvitationForm.get('email').errors?.required">You must complete this field</mat-error>
+                <mat-error *ngIf="resendInvitationForm.get('email').errors?.email">Invalid e-mail address</mat-error>
+            </mat-form-field>
+            
+            <button id="forgot-password-button" (click)="onSubmit()" mat-raised-button color="raised">Resend Invitation</button>
+           
+            <mat-error *ngIf="error" class="invalid-credentials-label" fxLayout="row" fxLayoutAlign="space-around center">{{errorMessage}}</mat-error>
+
+            <a class="sign-up-label" [routerLink]="['/register']" fxLayout="row" fxLayoutAlign="space-around center">New here? Sign up!</a>
+
+        </mat-card-content>
+
+    </mat-card>
+
+</form>

@@ -4,33 +4,27 @@ import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-resend-invitation',
+  templateUrl: './resend-invitation.component.html',
+  styleUrls: ['./resend-invitation.component.scss']
 })
+export class ResendInvitationComponent implements OnInit {
 
-export class LoginComponent implements OnInit {
-
-  loginForm: FormGroup;
+  resendInvitationForm: FormGroup;
   hide = true;
   error = false;
   errorMessage;
-
-  constructor(
-    private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
     private authService: AuthenticationService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
+    this.resendInvitationForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]});
   }
-
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value).subscribe(
+    if (this.resendInvitationForm.valid) {
+      this.authService.resendInvitation(this.resendInvitationForm.get('email').value).subscribe(
         (res: any) => {
           if (res.success) {
             this.router.navigate(['']);
@@ -42,9 +36,5 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-  }
-
-  onSubmitForgotPass(){
-    this.router.navigate(['/resendInvitation']);
   }
 }

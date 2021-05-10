@@ -50,8 +50,10 @@ import { JobOfferComponent } from './home/job-offer/job-offer.component';
 import { RenegotiatonComponent } from './home/job-offer/renegotiaton/renegotiaton.component';
 import { CreateJobOfferFormComponent } from './jobs/create-job-offer-form/create-job-offer-form.component';
 import { PastJobsComponent } from './profiles/freelancer-profile/past-jobs/past-jobs.component';
+
 import { OffersListElementComponent } from './profiles/employer-profile/offers-list-element/offers-list-element.component';
 import { StatusFilterPipe } from './profiles/employer-profile/status-filter.pipe';
+import { ResendInvitationComponent } from './authentication/resend-invitation/resend-invitation.component';
 
 
 @NgModule({
@@ -72,6 +74,8 @@ import { StatusFilterPipe } from './profiles/employer-profile/status-filter.pipe
     PastJobsComponent,
     OffersListElementComponent,
     StatusFilterPipe
+    ResendInvitationComponent
+
   ],
   imports: [
     BrowserModule,
