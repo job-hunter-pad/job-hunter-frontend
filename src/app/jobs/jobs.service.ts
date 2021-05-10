@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/internal/observable/of';
-import { JOBS } from '../mock-jobs'
 import { contentHeaders } from '../shared/headers'
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -43,10 +42,6 @@ export class JobsService {
 				headers: contentHeaders
 			}
 		);
-	}
-
-	getJobs() {
-		return of(JOBS);
 	}
 
 	createJobOffer(jobOffer) {

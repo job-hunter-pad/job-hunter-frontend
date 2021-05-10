@@ -73,7 +73,7 @@ import { ResendInvitationComponent } from './authentication/resend-invitation/re
     CreateJobOfferFormComponent,
     PastJobsComponent,
     OffersListElementComponent,
-    StatusFilterPipe
+    StatusFilterPipe,
     ResendInvitationComponent
 
   ],
