@@ -1,3 +1,5 @@
+import { JobApplication } from "./jobApplication";
+
 export interface JobOffer {
     jobName: string;
     jobDescription: string;
@@ -5,5 +7,7 @@ export interface JobOffer {
     employerId: string;
     employerName: string;
     hourSalaryAmount: number;
-    skills: string[]
+    skills: string[];
+    status: string;
+    applications: JobApplication[];
 }

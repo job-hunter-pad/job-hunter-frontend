@@ -1,18 +1,14 @@
 <div fxLayout="column" fxLayoutAlign="space-evenly">
   <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
-    <h1 mat-dialog-title> {{data.job_name}}</h1>
-    <a href='/employerProfile/:data.employer_id' class="employer-name">Employer: {{data.employer_name}}</a>
-    <div mat-dialog-content class="job-description"> {{data.job_description}}</div>
+    <h1 mat-dialog-title> {{data.jobName}}</h1>
+    <mat-card-subtitle>{{data.employerName}}</mat-card-subtitle>
+    <div mat-dialog-content class="job-description"> {{data.jobDescription}}</div>
+
     <div>
-      <p class="job-salary">Salary:<B> {{data.job_salary}} $ </B></p>
+      <p class="job-salary">Salary:<B> {{data.hourSalaryAmount}} $ </B></p>
     </div>
     <div class="applicants">
       <a>Applicants: {{applicants.length}}</a>
-      <mat-list role="list" *ngFor="let applicant of applicants">
-        <mat-list-item class="list-item-applicant" role="listitem">
-          {{applicant.name}}
-        </mat-list-item>
-      </mat-list>
     </div>
 
   <div class="apply-form" fxLayout="row" fxLayoutAlign="space-evenly center" >

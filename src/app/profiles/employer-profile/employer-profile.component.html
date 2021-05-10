@@ -154,9 +154,27 @@
         </div>
     </mat-tab>
 
-    <mat-tab label="Portfolio">
-        <div *ngIf="employerProfile">
-            Portfolio here
+    <mat-tab label="Job Offers">
+        <div class="gen-info-div" *ngIf="employerProfile">
+            <mat-card class="parent-card" fxFlex>
+                <div *ngIf="!ownProfile">
+                    <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of displayedJobs">
+                        <app-list-element class="job-item" [jobValue]="job"></app-list-element>
+                    </div>
+                    <mat-paginator #paginator [length]="jobOffers.length" [pageSize]="3" (page)="showJobs($event)">
+                    </mat-paginator>
+                </div>
+
+                <div *ngIf="ownProfile">
+                    <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of displayedJobs">
+                        <app-offers-list-element class="job-item" [job]="job">
+                        </app-offers-list-element>
+                    </div>
+                    <mat-paginator #paginator [length]="jobOffers.length" [pageSize]="3"
+                        [pageSizeOptions]="[3, 5, 8, 10, 20]" (page)="showJobs($event)">
+                    </mat-paginator>
+                </div>
+            </mat-card>
         </div>
     </mat-tab>
 </mat-tab-group>

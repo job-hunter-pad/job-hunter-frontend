@@ -1,8 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Job } from '../../job'
+import { JobOffer } from 'src/app/jobs/jobOffer';
 import { RenegotiatonComponent } from './renegotiaton/renegotiaton.component'
+import { Job } from '../../job'
 import { HomeService } from '../home.service'
 
 @Component({
@@ -25,6 +26,7 @@ export class JobOfferComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<JobOfferComponent>,
+
     @Inject(MAT_DIALOG_DATA) public data: Job,
     public dialog: MatDialog, private formBuilder: FormBuilder,
     private homeService: HomeService,) { }
@@ -56,5 +58,4 @@ export class JobOfferComponent implements OnInit {
         );
       }
     }
-
 }
