@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JobOffer } from '../jobs/jobOffer';
 import { JobsService } from '../jobs/jobs.service';
 
 @Component({
@@ -8,15 +9,16 @@ import { JobsService } from '../jobs/jobs.service';
 })
 export class HomeComponent implements OnInit {
 
-  jobs = [];
+  jobs: JobOffer[];
   displayedJobs;
   searchText;
-  
+
   constructor(private jobService: JobsService) { }
 
   ngOnInit(): void {
-    this.jobService.getJobs().subscribe(jobArray => {
-      this.jobs = jobArray; 
+    this.jobService.getAllJobOffers().subscribe(jobArray => {
+      console.log(jobArray);
+      this.jobs = jobArray;
       this.displayedJobs = jobArray;
       this.showJobs({ pageIndex: 0, pageSize: 10 });
     })
@@ -24,10 +26,10 @@ export class HomeComponent implements OnInit {
 
   showJobs(event) {
     console.log(event);
-    var start = event.pageIndex*event.pageSize;
+    var start = event.pageIndex * event.pageSize;
     var end = start + event.pageSize;
-    this.displayedJobs = this.jobs.slice(start , end)
+    this.displayedJobs = this.jobs.slice(start, end)
   }
 
-  
+
 }
