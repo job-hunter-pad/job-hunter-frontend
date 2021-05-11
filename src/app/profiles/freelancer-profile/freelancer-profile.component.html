@@ -195,7 +195,7 @@
                     </mat-card-header>
                     <mat-card-content fxFlexFill>
                         <div class="job-list" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="40px">
-                            <app-past-jobs *ngFor="let job of displayedJobs" [jobValue]="job" fxFlex>
+                            <app-past-jobs *ngFor="let job of displayedJobs" [jobValue]="job.jobOffer" fxFlex>
                             </app-past-jobs>
                         </div>
                         <mat-paginator #paginator [length]="jobs.length" [pageSize]="2" (page)="showJobs($event)">
