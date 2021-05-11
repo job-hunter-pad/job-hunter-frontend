@@ -32,29 +32,29 @@ export class JobOfferComponent implements OnInit {
 
   ngOnInit(): void {
     this.applyForm = this.formBuilder.group({
-      price: [this.data.hourSalaryAmount],
+      myPrice: [this.data.hourSalaryAmount],
       hours: ['', [Validators.required]],
     })
   };
 
 
-    openRenegotiation() {
-      if (this.applyForm.valid) {
-        this.homeService.apply(this.applyForm.get('hours').value, this.applyForm.get('price').value).subscribe(
-          (res: any) => {
-            if (res.success) {
-              this.dialog.open(RenegotiatonComponent, {
-                width: '500px',
-                height: '100px',
-                data: null
-              });
-            }
-            else {
-              this.errorMessage = res.fail_message;
-              this.error = true;
-            }
+  openRenegotiation() {
+    if (this.applyForm.valid) {
+      this.homeService.apply(this.applyForm.get('hours').value, this.applyForm.get('price').value).subscribe(
+        (res: any) => {
+          if (res.success) {
+            this.dialog.open(RenegotiatonComponent, {
+              width: '500px',
+              height: '100px',
+              data: null
+            });
           }
-        );
-      }
+          else {
+            this.errorMessage = res.fail_message;
+            this.error = true;
+          }
+        }
+      );
     }
+  }
 }

@@ -12,7 +12,7 @@ export class SearchBarPipe implements PipeTransform {
     searchText = searchText.toLowerCase();
 
     return jobs.filter(job => {
-      return job.job_name.toLowerCase().includes(searchText);
+      return job.jobName.toLowerCase().includes(searchText);
     });
   }
 

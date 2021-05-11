@@ -15,6 +15,7 @@ export class JobsService {
 	private createJobUrl = '/api/jobs/create';
 
 	private getJobAllOffersUrl = '/api/jobs';
+	private activeJobsUrl = '/api/applications/activeJobs';
 
 	private getNotCompletedJobOffersByEmployerIdUrl = '/api/jobs/getNotCompletedJobOffers/';
 
@@ -28,8 +29,18 @@ export class JobsService {
 
 	//TODO pe home page ne trebuie toate active jobs - faci functie si o apeezi in home page
 
+	getAllActiveJobs() {
+		return this.http.get<JobOffer[]>(this.activeJobsUrl,
+			{
+				headers: contentHeaders
+			})
+	}
+
 	getAllJobOffers(): Observable<JobOffer[]> {
-		return this.http.get<JobOffer[]>(this.getJobAllOffersUrl)
+		return this.http.get<JobOffer[]>(this.getJobAllOffersUrl,
+			{
+				headers: contentHeaders
+			})
 	}
 
 	getNotCompletedJobOffersByEmployerId(id): Observable<JobOffer[]> {
