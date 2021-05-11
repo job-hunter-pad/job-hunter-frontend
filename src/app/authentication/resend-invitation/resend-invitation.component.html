@@ -14,10 +14,8 @@
                 <mat-error *ngIf="resendInvitationForm.get('email').errors?.required">You must complete this field</mat-error>
                 <mat-error *ngIf="resendInvitationForm.get('email').errors?.email">Invalid e-mail address</mat-error>
             </mat-form-field>
-            
-            <a class="sign-up-label" [routerLink]="['/register']" fxLayout="row" fxLayoutAlign="space-around center">New here? Sign up!</a>
-
-            <button id="forgot-password-button" (click)="onSubmit()" mat-button color="raised">Resend Invitation</button>
+        
+            <button id="forgot-password-button" (click)="onSubmit()" mat-raised-button color="primary">Resend Password Change</button>
            
             <mat-error *ngIf="error" class="invalid-credentials-label" fxLayout="row" fxLayoutAlign="space-around center">{{errorMessage}}</mat-error>
 

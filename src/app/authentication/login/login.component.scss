@@ -1,9 +1,18 @@
 .login-card {
   margin-top: 7.5vh;
 }
+.forgot-password-label{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: black;
+}
 
+.forgot-password-label:hover {
+  color: var(--primary-color);
+}
 .sign-up-label {
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 10px;
   text-decoration: none;
   color: black;
