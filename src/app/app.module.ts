@@ -25,7 +25,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDividerModule } from '@angular/material/divider';
@@ -51,6 +51,7 @@ import { RenegotiatonComponent } from './home/job-offer/renegotiaton/renegotiato
 import { CreateJobOfferFormComponent } from './jobs/create-job-offer-form/create-job-offer-form.component';
 import { PastJobsComponent } from './profiles/freelancer-profile/past-jobs/past-jobs.component';
 import { ResendInvitationComponent } from './authentication/resend-invitation/resend-invitation.component';
+import { AddReviewComponent } from './shared/payment/add-review/add-review.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ResendInvitationComponent } from './authentication/resend-invitation/re
     RenegotiatonComponent,
     CreateJobOfferFormComponent,
     PastJobsComponent,
-    ResendInvitationComponent
+    ResendInvitationComponent,
+    AddReviewComponent
   ],
   imports: [
     BrowserModule,
