@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
+import { JobOffer } from 'src/app/jobs/jobOffer';
+import { JobsService } from 'src/app/jobs/jobs.service';
 import { UserProfileService } from '../user-profile.service';
 import { EmployerProfile } from './employer-profile';
 
@@ -12,15 +15,19 @@ import { EmployerProfile } from './employer-profile';
 export class EmployerProfileComponent {
 
   imageSrc = null;
-  ownProfile = true;
+  ownProfile = false;
   isEditing = false;
   showUserNotFoundError = false;
   rowHeight = "20vh";
   employerProfile: EmployerProfile;
   id: string;
+  jobOffers: JobOffer[] = [];
+  searchText;
 
   constructor(
     private route: ActivatedRoute,
+    private jobsService: JobsService,
+    private authenticationService: AuthenticationService,
     private userProfileService: UserProfileService,
     private snackBar: MatSnackBar) { }
 
@@ -41,6 +48,16 @@ export class EmployerProfileComponent {
 
     this.userProfileService.getProfilePhoto(this.id).subscribe(photoBlob => {
       this.createImageFromBlob(photoBlob);
+    })
+
+    const userData = this.authenticationService.getUserData();
+    if (userData.userId == this.id) {
+      this.ownProfile = true;
+    }
+
+    this.jobsService.getNotCompletedJobOffersByEmployerId(this.id).subscribe(jobArray => {
+      console.log(jobArray);
+      this.jobOffers = jobArray
     })
   }
 
@@ -79,6 +96,13 @@ export class EmployerProfileComponent {
 
   openProfilePhotoDialog() {
     this.profilePhotoFileInput.nativeElement.click();
+  }
+
+  refreshPage() {
+    this.jobsService.getNotCompletedJobOffersByEmployerId(this.id).subscribe(jobArray => {
+      console.log(jobArray);
+      this.jobOffers = jobArray
+    })
   }
 
   private saveProfile() {

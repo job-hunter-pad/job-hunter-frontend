@@ -154,9 +154,22 @@
         </div>
     </mat-tab>
 
-    <mat-tab label="Portfolio">
-        <div *ngIf="employerProfile">
-            Portfolio here
+    <mat-tab label="Job Offers">
+        <div class="gen-info-div" style="max-height: 300px;" *ngIf="employerProfile">
+            <mat-card class="parent-card" style="overflow-y: auto;" fxFlex>
+                <div *ngIf="!ownProfile">
+                    <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of jobOffers">
+                        <app-list-element class="job-item" [jobValue]="job"></app-list-element>
+                    </div>
+                </div>
+
+                <div *ngIf="ownProfile">
+                    <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of jobOffers">
+                        <app-offers-list-element class="job-item" [job]="job" (applicationHandleEvent)="refreshPage()">
+                        </app-offers-list-element>
+                    </div>
+                </div>
+            </mat-card>
         </div>
     </mat-tab>
 </mat-tab-group>

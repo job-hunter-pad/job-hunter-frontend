@@ -10,6 +10,7 @@ import { SkillsService } from 'src/app/shared/skills.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { JobsService } from 'src/app/jobs/jobs.service';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 @Component({
   selector: 'app-freelancer-profile',
@@ -21,7 +22,7 @@ export class FreelancerProfileComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
 
   imageSrc = null;
-  ownProfile = true;
+  ownProfile = false;
   isEditing = false;
   showUserNotFoundError = false;
   rowHeight = "180px";
@@ -38,6 +39,7 @@ export class FreelancerProfileComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private jobService: JobsService,
+    private authenticationService: AuthenticationService,
     private route: ActivatedRoute,
     private userProfileService: UserProfileService,
     private skillsService: SkillsService,
@@ -82,7 +84,12 @@ export class FreelancerProfileComponent implements OnInit {
       this.createImageFromBlob(photoBlob);
     })
 
-    this.jobService.getJobs().subscribe(jobArray => {
+    const userData = this.authenticationService.getUserData();
+    if (userData.userId == this.id) {
+      this.ownProfile = true;
+    }
+
+    this.jobService.getCompletedJobOffersByFreelancerId(this.id).subscribe(jobArray => {
       this.jobs = jobArray; this.displayedJobs = jobArray;
       this.showJobs({ pageIndex: 0, pageSize: 2 });
     })

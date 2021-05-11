@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Job } from '../../job'
+import { JobOffer } from 'src/app/jobs/jobOffer';
 import { RenegotiatonComponent } from './renegotiaton/renegotiaton.component'
 import { HomeService } from '../home.service'
 
@@ -25,13 +25,14 @@ export class JobOfferComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<JobOfferComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Job,
+
+    @Inject(MAT_DIALOG_DATA) public data: JobOffer,
     public dialog: MatDialog, private formBuilder: FormBuilder,
     private homeService: HomeService,) { }
 
   ngOnInit(): void {
     this.applyForm = this.formBuilder.group({
-      price: [this.data.job_salary],
+      price: [this.data.hourSalaryAmount],
       hours: ['', [Validators.required]],
     })
   };
@@ -56,5 +57,4 @@ export class JobOfferComponent implements OnInit {
         );
       }
     }
-
 }
