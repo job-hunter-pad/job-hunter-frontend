@@ -20,7 +20,13 @@ export class JobsService {
 
 	private getCompletedJobOffersByFreelancerIdUrl = "/api/applications/completedJobs/";
 
+	private rejectApplicationUrl = "/api/jobs/rejectApplication/";
+
+	private acceptApplicationUrl = "/api/jobs/acceptApplication/";
+
 	constructor(private http: HttpClient) { }
+
+	//TODO pe home page ne trebuie toate active jobs - faci functie si o apeezi in home page
 
 	getAllJobOffers(): Observable<JobOffer[]> {
 		return this.http.get<JobOffer[]>(this.getJobAllOffersUrl)
@@ -48,6 +54,22 @@ export class JobsService {
 		return this.http.post(
 			this.createJobUrl,
 			JSON.stringify(jobOffer), {
+			headers: contentHeaders
+		});
+	}
+
+	acceptApplication(jobOfferId, applicationId) {
+		return this.http.post(
+			this.acceptApplicationUrl + jobOfferId + "/" + applicationId,
+			JSON.stringify({ jobId: jobOfferId, applicationId: applicationId }), {
+			headers: contentHeaders
+		});
+	}
+
+	rejectApplication(jobOfferId, applicationId) {
+		return this.http.post(
+			this.rejectApplicationUrl + jobOfferId + "/" + applicationId,
+			JSON.stringify({ jobId: jobOfferId, applicationId: applicationId }), {
 			headers: contentHeaders
 		});
 	}
