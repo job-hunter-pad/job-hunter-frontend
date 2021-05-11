@@ -3,6 +3,7 @@ import { JobsService } from 'src/app/jobs/jobs.service';
 import { EventEmitter } from '@angular/core';
 import { JobApplication } from 'src/app/jobs/jobApplication';
 import { JobOffer } from 'src/app/jobs/jobOffer';
+import { PaymentService } from 'src/app/shared/payment/payment.service';
 
 @Component({
   selector: 'app-offers-list-element',
@@ -41,7 +42,7 @@ export class OffersListElementComponent implements OnInit {
   value: number;
   acceptedApplication: JobApplication;
 
-  constructor(private jobService: JobsService) { }
+  constructor(private jobService: JobsService, private paymentService: PaymentService) { }
 
   ngOnInit(): void {
   }
@@ -72,5 +73,8 @@ export class OffersListElementComponent implements OnInit {
 
   completeJobOffer() {
 
+    var amount = this.acceptedApplication.estimatedProjectCompleteTime * this.acceptedApplication.hourSalaryAmount;
+
+    this.paymentService.checkout(this.job.id, this.job.jobName, this.job.employerId, this.acceptedApplication.freelancerId, amount)
   }
 }

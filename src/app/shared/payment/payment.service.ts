@@ -38,10 +38,6 @@ export class PaymentService {
       return
     }
 
-    console.log(employerExists)
-    console.log(freelancerExists)
-    return;
-
     const payment = {
       jobId: jobId,
       jobName: jobName,
@@ -54,7 +50,6 @@ export class PaymentService {
 
     const stripe = await this.stripePromise;
 
-    // this is a normal http calls for a backend api
     this.http
       .post(this.checkoutUrl, payment)
       .subscribe((data: any) => {

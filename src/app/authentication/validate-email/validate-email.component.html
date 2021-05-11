@@ -1,8 +1,8 @@
-<div  fxLayout="column" fxLayoutAlign="center center">
+<div fxLayout="column" fxLayoutAlign="center center">
     <mat-card class="validate-email-card" fxLayout="column" fxLayoutAlign="space-around center">
         <p class="card-text" *ngIf="spin">Waiting for e-mail validation</p>
         <mat-spinner *ngIf="spin"></mat-spinner>
         <p class="card-text" *ngIf="!spin">{{message}}</p>
-        <button mat-raised-button *ngIf="!spin" color="primary"  [routerLink]="['']"> Go to home page </button>
+        <button mat-raised-button *ngIf="!spin" color="primary" [routerLink]="['']"> Go to login page </button>
     </mat-card>
 </div>

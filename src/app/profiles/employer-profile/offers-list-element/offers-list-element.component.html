@@ -6,7 +6,12 @@
     <mat-card-content class="content" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="10px"
         fxFlexFill>
         <div>
-            <span class="attribute">Salary:</span> {{job.hourSalaryAmount}} $
+            <div *ngIf="!acceptedApplication">
+                <span class="attribute">Salary:</span> {{job.hourSalaryAmount}} $
+            </div>
+            <div *ngIf="acceptedApplication">
+                <span class="attribute">Salary:</span> {{acceptedApplication.hourSalaryAmount}} $
+            </div>
         </div>
         <div>
             <span class="attribute">Date:</span> {{job.date}}
@@ -36,7 +41,7 @@
                             {{application.freelancerName}}
                         </mat-panel-title>
                         <span fxFlex='30'>
-                            Proposed salary/hour: {{application.hourSalaryAmount}}$
+                            Proposed salary/hour: {{application.hourSalaryAmount}} $
                         </span>
                         <span fxFlex='30'>
                             Estimated completion time: {{application.estimatedProjectCompleteTime}}
@@ -73,7 +78,7 @@
 
             <div>
                 <span class="attribute">Amount to be paid:</span> {{acceptedApplication.estimatedProjectCompleteTime *
-                acceptedApplication.hourSalaryAmount}}
+                acceptedApplication.hourSalaryAmount}} $
             </div>
         </div>
     </mat-card-content>
