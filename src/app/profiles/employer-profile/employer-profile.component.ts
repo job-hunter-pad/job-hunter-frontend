@@ -24,8 +24,6 @@ export class EmployerProfileComponent {
   jobOffers: JobOffer[] = [];
   searchText;
 
-  displayedJobs;
-
   constructor(
     private route: ActivatedRoute,
     private jobsService: JobsService,
@@ -59,17 +57,8 @@ export class EmployerProfileComponent {
 
     this.jobsService.getNotCompletedJobOffersByEmployerId(this.id).subscribe(jobArray => {
       console.log(jobArray);
-      this.jobOffers = jobArray;
-      this.displayedJobs = jobArray;
-      this.showJobs({ pageIndex: 0, pageSize: 3 });
+      this.jobOffers = jobArray
     })
-  }
-
-  showJobs(event) {
-    console.log(event);
-    var start = event.pageIndex * event.pageSize;
-    var end = start + event.pageSize;
-    this.displayedJobs = this.jobOffers.slice(start, end)
   }
 
   createImageFromBlob(image: Blob) {
@@ -107,6 +96,13 @@ export class EmployerProfileComponent {
 
   openProfilePhotoDialog() {
     this.profilePhotoFileInput.nativeElement.click();
+  }
+
+  refreshPage() {
+    this.jobsService.getNotCompletedJobOffersByEmployerId(this.id).subscribe(jobArray => {
+      console.log(jobArray);
+      this.jobOffers = jobArray
+    })
   }
 
   private saveProfile() {
