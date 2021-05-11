@@ -1,10 +1,8 @@
 <mat-card fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="3px">
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill>
-        <mat-card-title>
-            {{job.jobName}}
-        </mat-card-title>
-        <button mat-raised-button color="primary">Complete</button>
-    </div>
+    <mat-card-title>
+        {{job.jobName}}
+    </mat-card-title>
+
     <mat-card-content class="content" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="10px"
         fxFlexFill>
         <div>
@@ -24,9 +22,13 @@
         <div>
             <span class="attribute">Description:</span> {{job.jobDescription}}
         </div>
-        <div *ngIf="isStatusPending()" class="appl-div" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px"
-            fxFlexFill>
-            <span class="attribute">Applications:</span>
+        <div *ngIf="isStatusPending()" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" fxFlexFill>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="5px">
+                <span class="attribute applic">Applications:</span>
+                <div *ngIf="!job.applicants">
+                    No applications pending
+                </div>
+            </div>
             <mat-accordion *ngIf="job.applications" fxFlexFill>
                 <mat-expansion-panel *ngFor="let application of job.applications | statusFilter: 'PENDING'" fxFlexFill>
                     <mat-expansion-panel-header fxLayout="row">
@@ -42,14 +44,17 @@
                     </mat-expansion-panel-header>
                     <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
                         <div> {{application.message}} </div>
-                        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
-                            <div class="attribute">Reject application </div>
-                            <button mat-icon-button color="accent" aria-label="Reject">
-                                <mat-icon>clear</mat-icon>
+                        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+                            <button mat-stroked-button (click)="onRejectApplicationButtonClick(application.id)"
+                                fxLayout="row" fxLayoutAlign="space-between center">
+                                <mat-icon color="accent" aria-hidden="false" aria-label="Edit Icon">clear</mat-icon>
+                                <span>Reject application</span>
                             </button>
-                            <div class="attribute spacing">Accept application </div>
-                            <button mat-icon-button color="primary" aria-label="Accept">
-                                <mat-icon>done</mat-icon>
+
+                            <button mat-stroked-button (click)="onAcceptApplicationButtonClick(application.id)"
+                                fxLayout="row" fxLayoutAlign="space-between center">
+                                <mat-icon color="primary" aria-hidden="false" aria-label="Edit Icon">done</mat-icon>
+                                <span>Accept application</span>
                             </button>
                         </div>
                     </div>
@@ -57,12 +62,27 @@
             </mat-accordion>
 
         </div>
-        <div *ngIf="true">
-            <span class="attribute">Freelancer:</span> {{job.freelancerName}}
-        </div>
-        <div *ngIf="true">
-            <span class="attribute">Amount to be paid:</span> {{job.estimatedProjectCompleteTime}} *
-            {{job.hourSalaryAmount}}
+        <div *ngIf="acceptedApplication" fxLayout="column" fxLayoutGap="10px">
+            <div>
+                <span class="attribute">Freelancer:</span> {{acceptedApplication.freelancerName}}
+            </div>
+            <div>
+                <span class="attribute">Complete time estimation:</span>
+                {{acceptedApplication.estimatedProjectCompleteTime}} hours
+            </div>
+
+            <div>
+                <span class="attribute">Amount to be paid:</span> {{acceptedApplication.estimatedProjectCompleteTime *
+                acceptedApplication.hourSalaryAmount}}
+            </div>
         </div>
     </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20px"
+        *ngIf="isStatusInProgress()">
+        <button [disabled]="!isApplicationComplete" class="complete-button" mat-raised-button color="primary"
+            (click)="completeJobOffer()">Complete</button>
+        <div class="disable-message" *ngIf="!isApplicationComplete">
+            Waiting for the freelancer to complete this application
+        </div>
+    </mat-card-actions>
 </mat-card>
