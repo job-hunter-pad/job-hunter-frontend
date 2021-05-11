@@ -54,7 +54,7 @@ import { PastJobsComponent } from './profiles/freelancer-profile/past-jobs/past-
 import { OffersListElementComponent } from './profiles/employer-profile/offers-list-element/offers-list-element.component';
 import { StatusFilterPipe } from './profiles/employer-profile/status-filter.pipe';
 import { ResendInvitationComponent } from './authentication/resend-invitation/resend-invitation.component';
-import { AddReviewComponent } from './shared/payment/add-review/add-review.component';
+import { AddReviewComponent } from './profiles/add-review/add-review.component';
 
 
 @NgModule({

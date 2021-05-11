@@ -9,7 +9,7 @@ import { CreateJobOfferFormComponent } from './jobs/create-job-offer-form/create
 import { EmployerProfileComponent } from './profiles/employer-profile/employer-profile.component';
 import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
 import { AuthGuard } from './shared/auth-guard';
-import { AddReviewComponent } from './shared/payment/add-review/add-review.component';
+import { AddReviewComponent } from './profiles/add-review/add-review.component';
 
 const routes: Routes = [
   {
