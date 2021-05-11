@@ -1,6 +1,7 @@
 import { JobApplication } from "./jobApplication";
 
 export interface JobOffer {
+    id?: string;
     jobName: string;
     jobDescription: string;
     date: string;

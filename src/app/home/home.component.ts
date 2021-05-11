@@ -9,7 +9,7 @@ import { JobsService } from '../jobs/jobs.service';
 })
 export class HomeComponent implements OnInit {
 
-  jobs: JobOffer[];
+  jobs: JobOffer[]=[];
   displayedJobs;
   searchText;
 

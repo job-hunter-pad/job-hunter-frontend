@@ -11,21 +11,33 @@
       <a>Applicants: {{applicants.length}}</a>
     </div>
 
-  <div class="apply-form" fxLayout="column" fxLayoutAlign="space-evenly center" >
-    <form [formGroup]="applyForm" class="apply-form-form" >
-      <mat-form-field class="hours-field" appearance="outline">
-        <mat-label>Hours</mat-label>
-        <input matInput placeholder="hours" [formControlName]="'hours'" required>
-        <mat-error *ngIf="applyForm.get('hours').errors?.required"> You must complete this field
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="price-field" appearance="outline">
-        <mat-label>My price</mat-label>
-        <input matInput placeholder="my price" [formControlName]="'myPrice'">
-      </mat-form-field>
-     
-      <button mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
-    </form> 
+
+    <form [formGroup]="applyForm" class="apply-form-form" class="apply-form"  fxFlexFill fxLayout="column"
+    fxLayoutAlign="space-evenly stretch" *ngIf="!isEmployer" >
+      <div fxFlexFill>
+        <mat-form-field class="hours-field" appearance="outline">
+          <mat-label>Hours</mat-label>
+          <input matInput placeholder="hours" formControlName="hours" required>
+          <mat-error *ngIf="applyForm.get('hours').errors?.required"> You must complete this field
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="price-field" appearance="outline">
+          <mat-label>My price</mat-label>
+          <input matInput placeholder="My price" formControlName="myPrice">
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field fxFlexFill>
+          <textarea #message maxlength="800" name="description" cdkTextareaAutosize cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="10" matInput placeholder="Complete this area with your application message"
+            formControlName="applyMessage"></textarea>
+          <mat-hint align="end">{{message.value.length}} / 800</mat-hint>
+        </mat-form-field>
+        
+      </div>
+      <mat-spinner *ngIf="pushedButton"></mat-spinner>
+      <button [disabled]="pushedButton" mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
+    </form>
   </div>
-  </div>
+
 </div>
