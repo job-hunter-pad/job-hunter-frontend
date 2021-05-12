@@ -13,10 +13,10 @@
       <p class="job-salary">Salary: {{data.hourSalaryAmount}} $ </p>
     </div>
 
-
     <form [formGroup]="applyForm" class="apply-form-form" class="apply-form"  fxFlexFill fxLayout="column"
     fxLayoutAlign="space-evenly stretch" *ngIf="!isEmployer" >
       <div fxFlexFill>
+
         <mat-form-field class="hours-field" appearance="outline">
           <mat-label>Hours</mat-label>
           <input matInput placeholder="hours" formControlName="hours" required>
@@ -25,6 +25,7 @@
         </mat-form-field>
         <mat-form-field class="price-field" appearance="outline">
           <mat-label>My price</mat-label>
+
           <input matInput placeholder="My price" formControlName="myPrice">
         </mat-form-field>
       </div>
@@ -40,6 +41,7 @@
       <mat-spinner *ngIf="pushedButton"></mat-spinner>
       <button [disabled]="pushedButton" mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
     </form>
+
   </div>
 
 </div>

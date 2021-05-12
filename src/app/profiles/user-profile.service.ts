@@ -12,6 +12,16 @@ export class UserProfileService {
 
   constructor(private http: HttpClient) { }
 
+  profileExists(id) {
+    return this.http.get(
+      this.profileUrl + id, {
+      headers: contentHeaders
+    }
+    ).pipe(map((profile) => {
+      return profile != undefined;
+    }));
+  }
+
   getEmployerProfileById(id) {
     return this.http.get(
       this.profileUrl + id,

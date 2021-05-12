@@ -14,8 +14,4 @@ export class PastJobsComponent implements OnInit {
 
   @Input()
   jobValue;
-
-  viewDetailsButtonClick(jobValue) {
-    console.log(jobValue);
-  }
 }
