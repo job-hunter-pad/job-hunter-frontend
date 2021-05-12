@@ -27,9 +27,9 @@
             </mat-form-field>
             
             <button id="login-button" (click)="onSubmit()" mat-raised-button color="primary">Login</button>
-            <button id="forgot-password-button" (click)="onSubmitForgotPass()" mat-stroked-button color="secondary">Forgot Password</button>
-           
+            
             <mat-error *ngIf="error" class="invalid-credentials-label" fxLayout="row" fxLayoutAlign="space-around center">{{errorMessage}}</mat-error>
+            <a class="forgot-password-label" [routerLink]="['/resendInvitation']" fxLayout="row" fxLayoutAlign="space-around center">Forgot your password?</a>
 
             <a class="sign-up-label" [routerLink]="['/register']" fxLayout="row" fxLayoutAlign="space-around center">New here? Sign up!</a>
 

@@ -10,20 +10,22 @@ import { contentHeaders } from '../shared/headers';
 })
 export class HomeService {
 
-	private applyUrl = "/api/apply";
+  private applyUrl = "/api/applications/apply";
+  private applicationsUrl = "/api/jobs/getJobApplications/";
 
   private jwtHelper = new JwtHelperService();
 
-	isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) {	}
+  constructor(private http: HttpClient, private router: Router) { }
 
-  apply(hours,price){
+  apply(jobId, freelancerId, freelancerName, hours, price, applyMessage) {
     return this.http.post(
-			this.applyUrl,
-			JSON.stringify({ hours: hours, price: price }), {
-			headers: contentHeaders
-    });
-	}
-  
+      this.applyUrl,
+      JSON.stringify({ jobId: jobId, freelancerId: freelancerId, freelancerName: freelancerName, estimatedProjectCompleteTime: hours, hourSalaryAmount: price, message: applyMessage }),
+      {
+        headers: contentHeaders
+      });
+  }
+
 }

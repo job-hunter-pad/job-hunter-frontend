@@ -1,18 +1,22 @@
+<div mat-dialog-actions class="close-button">
+  <button mat-icon-button mat-dialog-close><mat-icon>cancel</mat-icon></button>
+</div>
+
 <div fxLayout="column" fxLayoutAlign="space-evenly">
   <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
+  
     <h1 mat-dialog-title> {{data.jobName}}</h1>
-    <mat-card-subtitle>{{data.employerName}}</mat-card-subtitle>
+    <mat-card-subtitle class="employerName" routerLink="/employerProfile/{{data.employerId}}">Employer : {{data.employerName}}</mat-card-subtitle>
     <div mat-dialog-content class="job-description"> {{data.jobDescription}}</div>
 
     <div>
-      <p class="job-salary">Salary:<B> {{data.hourSalaryAmount}} $ </B></p>
-    </div>
-    <div class="applicants">
-      <a>Applicants: {{applicants.length}}</a>
+      <p class="job-salary">Salary: {{data.hourSalaryAmount}} $ </p>
     </div>
 
-    <div class="apply-form" fxLayout="column" fxLayoutAlign="space-evenly center">
-      <form [formGroup]="applyForm" class="apply-form-form">
+    <form [formGroup]="applyForm" class="apply-form-form" class="apply-form"  fxFlexFill fxLayout="column"
+    fxLayoutAlign="space-evenly stretch" *ngIf="!isEmployer" >
+      <div fxFlexFill>
+
         <mat-form-field class="hours-field" appearance="outline">
           <mat-label>Hours</mat-label>
           <input matInput placeholder="hours" formControlName="hours" required>
@@ -21,11 +25,23 @@
         </mat-form-field>
         <mat-form-field class="price-field" appearance="outline">
           <mat-label>My price</mat-label>
-          <input matInput placeholder="my price" formControlName="myPrice">
-        </mat-form-field>
 
-        <button mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
-      </form>
-    </div>
+          <input matInput placeholder="My price" formControlName="myPrice">
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field fxFlexFill>
+          <textarea #message maxlength="800" name="description" cdkTextareaAutosize cdkAutosizeMinRows="2"
+            cdkAutosizeMaxRows="10" matInput placeholder="Complete this area with your application message"
+            formControlName="applyMessage"></textarea>
+          <mat-hint align="end">{{message.value.length}} / 800</mat-hint>
+        </mat-form-field>
+        
+      </div>
+      <mat-spinner *ngIf="pushedButton"></mat-spinner>
+      <button [disabled]="pushedButton" mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
+    </form>
+
   </div>
+
 </div>
