@@ -9,10 +9,14 @@ import { AuthenticationService } from './authentication/authentication.service';
 })
 export class AppComponent {
   title = 'job-hunter-frontend';
+  userType;
 
   constructor(private router: Router, public authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe((val) => {
+      this.userType = this.authService.getUserData().userType;
+    })
   }
 
   onViewProfileButtonClick() {
