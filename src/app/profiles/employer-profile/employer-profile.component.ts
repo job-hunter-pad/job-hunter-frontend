@@ -56,7 +56,7 @@ export class EmployerProfileComponent {
     }
 
     this.jobsService.getNotCompletedJobOffersByEmployerId(this.id).subscribe(jobArray => {
-      console.log(jobArray);
+      // console.log(jobArray);
       this.jobOffers = jobArray
     })
   }
@@ -100,7 +100,7 @@ export class EmployerProfileComponent {
 
   refreshPage() {
     this.jobsService.getNotCompletedJobOffersByEmployerId(this.id).subscribe(jobArray => {
-      console.log(jobArray);
+      // console.log(jobArray);
       this.jobOffers = jobArray
     })
   }

@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
           this.registerForm.get('userType').value
         ).subscribe(
           (res: any) => {
-            console.log(res)
+            // console.log(res)
             if (res.success) {
               this.router.navigate(['/login']);
             }

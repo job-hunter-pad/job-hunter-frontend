@@ -8,8 +8,12 @@
   margin-top: 10px;
   margin-bottom: 5px;
 }
+.employerName {
+  cursor: pointer;
+}
+
 .employerName:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 .job-salary {
   margin-bottom: 5px;

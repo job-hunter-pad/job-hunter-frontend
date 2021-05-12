@@ -6,6 +6,7 @@ import { RenegotiatonComponent } from './renegotiaton/renegotiaton.component'
 import { HomeService } from '../home.service';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { UserProfileService } from 'src/app/profiles/user-profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-offer',
@@ -28,7 +29,8 @@ export class JobOfferComponent implements OnInit {
     private formBuilder: FormBuilder,
     private homeService: HomeService,
     private authenticationService: AuthenticationService,
-    private userProfileService: UserProfileService) { }
+    private userProfileService: UserProfileService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.applyForm = this.formBuilder.group({
@@ -54,14 +56,14 @@ export class JobOfferComponent implements OnInit {
       // console.log(price_value);
       // console.log(message_value);
       // return;
-      console.log(this.data);
+      // console.log(this.data);
       this.pushedButton = true;
       const userData = this.authenticationService.getUserData();
       this.userProfileService.getFreelancerProfileById(userData.userId).subscribe(profile => {
         this.homeService.apply(this.data.id, userData.userId, profile.name, hours_value, price_value, message_value).subscribe(
           (res: any) => {
             this.pushedButton = false;
-            console.log(res);
+            // console.log(res);
             if (res) {
               this.dialog.open(RenegotiatonComponent, {
                 width: '500px',
@@ -78,5 +80,10 @@ export class JobOfferComponent implements OnInit {
       });
 
     }
+  }
+
+  navigateToEmployerProfile() {
+    this.dialog.closeAll();
+    this.router.navigate([`/employerProfile/${this.data.employerId}`]);
   }
 }
