@@ -1,14 +1,16 @@
+<div mat-dialog-actions class="close-button">
+  <button mat-icon-button mat-dialog-close><mat-icon>cancel</mat-icon></button>
+</div>
+
 <div fxLayout="column" fxLayoutAlign="space-evenly">
   <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
+  
     <h1 mat-dialog-title> {{data.jobName}}</h1>
-    <mat-card-subtitle>{{data.employerName}}</mat-card-subtitle>
+    <mat-card-subtitle class="employerName" routerLink="/employerProfile/{{data.employerId}}">Employer : {{data.employerName}}</mat-card-subtitle>
     <div mat-dialog-content class="job-description"> {{data.jobDescription}}</div>
 
     <div>
-      <p class="job-salary">Salary:<B> {{data.hourSalaryAmount}} $ </B></p>
-    </div>
-    <div class="applicants">
-      <a>Applicants: {{applicants.length}}</a>
+      <p class="job-salary">Salary: {{data.hourSalaryAmount}} $ </p>
     </div>
 
 

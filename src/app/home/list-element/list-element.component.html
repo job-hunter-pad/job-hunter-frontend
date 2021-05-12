@@ -3,18 +3,18 @@
     {{jobValue.jobName}}
   </mat-card-title>
   <div class="job-employer-name">
-    <mat-card-subtitle>
-      {{jobValue.employerName}}
+    <mat-card-subtitle class="employerName" routerLink="/employerProfile/{{jobValue.employerId}}">
+    Employer:  {{jobValue.employerName}}
     </mat-card-subtitle>
   </div>
   <div class="job-salary">
     <mat-card-content>
-      <p class="job-salary">Salary:<B> {{jobValue.hourSalaryAmount}} $ </B></p>
+      <p class="job-salary">Salary: {{jobValue.hourSalaryAmount}} $ </p>
     </mat-card-content>
   </div>
   <div class="job-date">
     <mat-card-subtitle>
-      {{jobValue.date}}
+     Date of post: {{jobValue.date}}
     </mat-card-subtitle>
   </div>
   <mat-card-actions class="job-apply-button">

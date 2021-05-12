@@ -14,13 +14,6 @@ import { UserProfileService } from 'src/app/profiles/user-profile.service';
 })
 export class JobOfferComponent implements OnInit {
 
-  applicants = [
-    { name: 'Mihai' },
-    { name: 'Gheorghe' },
-    { name: 'Amalia' },
-    { name: 'Stefania' }
-  ];
-
   applications;
   applyForm: FormGroup;
   error = false;
@@ -72,7 +65,7 @@ export class JobOfferComponent implements OnInit {
             if (res) {
               this.dialog.open(RenegotiatonComponent, {
                 width: '500px',
-                height: '100px',
+                height: '200px',
                 data: null
               });
             }

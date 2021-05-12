@@ -1,12 +1,20 @@
 .job-dialog{
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+.close-button{
+    float: right;
+    top:-5px;
+    right:-5px;
+}
 .employer-name{
     text-decoration: none;
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 15px;
 }
+.employerName:hover {
+    color: var(--primary-color);
+  }
 .job-description{
     display: block;
 }
