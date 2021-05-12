@@ -20,10 +20,15 @@
         <span class="nav-bar-text">Home</span>
       </button>
 
-      <button mat-button [routerLink]="['/createJob']">
+      <button mat-button *ngIf="userType == 'EMPLOYER'" [routerLink]="['/createJob']">
         <mat-icon class=" margin-right-8">edit</mat-icon>
         <span class="nav-bar-text">Create Job Offer</span>
       </button>
+
+      <!-- <button mat-button *ngIf="userType == 'FREELANCER'">
+        <mat-icon class=" margin-right-8">assignment</mat-icon>
+        <span class="nav-bar-text">My Jobs</span>
+      </button> -->
 
       <button mat-button (click)="onViewProfileButtonClick()">
         <mat-icon class="margin-right-8">person</mat-icon>

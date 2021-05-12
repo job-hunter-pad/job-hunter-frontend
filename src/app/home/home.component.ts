@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.jobService.getAllActiveJobs().subscribe(jobArray => {
-      console.log(jobArray);
+      // console.log(jobArray);
       this.jobs = jobArray;
       this.displayedJobs = jobArray;
       this.showJobs({ pageIndex: 0, pageSize: 10 });
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   }
 
   showJobs(event) {
-    console.log(event);
+    // console.log(event);
     var start = event.pageIndex * event.pageSize;
     var end = start + event.pageSize;
     this.displayedJobs = this.jobs.slice(start, end)

@@ -96,7 +96,7 @@ export class FreelancerProfileComponent implements OnInit {
   }
 
   showJobs(event) {
-    console.log(event);
+    // console.log(event);
     var start = event.pageIndex * event.pageSize;
     var end = start + event.pageSize;
     this.displayedJobs = this.jobs.slice(start, end)

@@ -1,43 +1,46 @@
-.job-dialog{
+.job-dialog {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.close-button{
+.close-button {
     float: right;
-    top:-5px;
-    right:-5px;
+    top: -5px;
+    right: -5px;
 }
-.employer-name{
+.employer-name {
     text-decoration: none;
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 15px;
 }
+.employerName {
+    cursor: pointer;
+}
 .employerName:hover {
     color: var(--primary-color);
-  }
-.job-description{
+}
+.job-description {
     display: block;
 }
-.buttons{
+.buttons {
     align-self: flex-end;
 }
-.applicants{
+.applicants {
     display: block;
     margin-bottom: 30px;
     font-size: 15px;
 }
-.mat-list-item{
+.mat-list-item {
     height: 0px;
 }
-.list-item-applicant{
+.list-item-applicant {
     display: list-item;
 }
-.apply-form-form{
+.apply-form-form {
     border-spacing: 10px;
 }
-.hours-field{
+.hours-field {
     margin-right: 10px;
 }
-.price-field{
+.price-field {
     margin-right: 10px;
 }
