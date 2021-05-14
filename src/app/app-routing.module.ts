@@ -10,6 +10,7 @@ import { EmployerProfileComponent } from './profiles/employer-profile/employer-p
 import { FreelancerProfileComponent } from './profiles/freelancer-profile/freelancer-profile.component';
 import { AuthGuard } from './shared/auth-guard';
 import { AddReviewComponent } from './profiles/add-review/add-review.component';
+import { AppliedJobsComponent } from './jobs/applied-jobs/applied-jobs.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,9 @@ const routes: Routes = [
   },
   {
     path: 'addReview/:reviewerId/:receiverId', component: AddReviewComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'appliedJobs/:freelancerId', component: AppliedJobsComponent, canActivate: [AuthGuard]
   }
 ];
 

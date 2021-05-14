@@ -1,0 +1,24 @@
+<div *ngIf="!ownProfile" class="gen-info-div" style="max-height: 300px;">
+    <mat-card class="parent-card" style="overflow-y: auto;" fxFlex>
+        <div>
+            Nothing to see here ...
+        </div>
+    </mat-card>
+</div>
+
+<div *ngIf="ownProfile" class="gen-info-div" style="max-height: 300px;">
+    <mat-card class="parent-card" fxFlex>
+        <div class="job-offers-title">Jobs In Progress</div>
+
+        <div *ngIf="!inProgressJobs || inProgressJobs.length == 0">
+            No Jobs In Progress
+        </div>
+        <div class="job-offers-list">
+            <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of inProgressJobs">
+                <app-applied-job-element class="job-item" [application]="getApplicationFromJob(job)"
+                    [job]="job.jobOffer" (onJobCompleted)="completeJob($event)">
+                </app-applied-job-element>
+            </div>
+        </div>
+    </mat-card>
+</div>
