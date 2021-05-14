@@ -1,0 +1,32 @@
+<mat-card fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="3px">
+    <mat-card-title>
+        {{job.jobName}}
+    </mat-card-title>
+
+    <mat-card-content class="content" fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="10px"
+        fxFlexFill>
+        <div>
+            <span class="attribute">Employer:</span> <span class="employerName"
+                routerLink="/employerProfile/{{job.employerId}}"> {{job.employerName}}</span>
+        </div>
+        <div *ngIf="application">
+            <span class="attribute">Salary:</span> {{application.hourSalaryAmount}} $
+        </div>
+        <div *ngIf="application">
+            <span class="attribute">Complete time estimation:</span>
+            {{application.estimatedProjectCompleteTime}} hours
+        </div>
+        <div>
+            <span class="attribute">Date:</span> {{job.date}}
+        </div>
+        <div>
+            <span class="attribute">Description:</span> {{job.jobDescription}}
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="job.status == 'IN_PROGRESS'" fxLayout="row" fxLayoutAlign="space-around center"
+        fxLayoutGap="20px">
+        <button class="complete-button" mat-raised-button color="primary" (click)="completeJobOffer()">Complete
+            Job</button>
+    </mat-card-actions>
+</mat-card>
