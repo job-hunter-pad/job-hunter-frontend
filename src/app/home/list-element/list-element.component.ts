@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {JobOfferComponent} from '../job-offer/job-offer.component'
-import {MatDialog} from '@angular/material/dialog';
+import { JobOfferComponent } from '../job-offer/job-offer.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-element',
@@ -18,10 +18,11 @@ export class ListElementComponent implements OnInit {
   jobValue;
 
   openDialog(): void {
-    this.dialog.open(JobOfferComponent,{
+    this.dialog.open(JobOfferComponent, {
       width: '800px',
       height: '500px',
-      data:  this.jobValue
+      data: this.jobValue,
+      autoFocus: false
     });
   }
 }
