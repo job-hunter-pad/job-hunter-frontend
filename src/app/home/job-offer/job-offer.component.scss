@@ -1,46 +1,68 @@
 .job-dialog {
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .close-button {
-    float: right;
-    top: -5px;
-    right: -5px;
+  float: right;
+  top: -5px;
+  right: -5px;
 }
 .employer-name {
-    text-decoration: none;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    font-size: 15px;
+  text-decoration: none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 15px;
 }
 .employerName {
-    cursor: pointer;
+  cursor: pointer;
 }
 .employerName:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 .job-description {
-    display: block;
+  display: block;
 }
 .buttons {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 .applicants {
-    display: block;
-    margin-bottom: 30px;
-    font-size: 15px;
+  display: block;
+  margin-bottom: 30px;
+  font-size: 15px;
 }
 .mat-list-item {
-    height: 0px;
+  height: 0px;
 }
 .list-item-applicant {
-    display: list-item;
+  display: list-item;
 }
 .apply-form-form {
-    border-spacing: 10px;
+  border-spacing: 10px;
 }
 .hours-field {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .price-field {
-    margin-right: 10px;
+  margin-right: 10px;
+}
+.subtitle-size {
+  font-size: 16px;
+}
+
+.apply {
+  width: 100px;
+  margin-top: 10px;
+}
+
+.spinner {
+  align-self: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.employer-div {
+  margin-top: 15px;
 }

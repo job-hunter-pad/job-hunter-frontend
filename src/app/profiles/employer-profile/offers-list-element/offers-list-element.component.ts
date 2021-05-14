@@ -77,4 +77,10 @@ export class OffersListElementComponent implements OnInit {
 
     this.paymentService.checkout(this.job.id, this.job.jobName, this.job.employerId, this.acceptedApplication.freelancerId, amount)
   }
+
+  noJobApplications() {
+    if (this._job.applications.length == 0)
+      return true;
+    return false;
+  }
 }
