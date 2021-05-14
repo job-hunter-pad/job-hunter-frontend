@@ -57,6 +57,7 @@ import { ResendInvitationComponent } from './authentication/resend-invitation/re
 import { AddReviewComponent } from './profiles/add-review/add-review.component';
 import { AppliedJobsComponent } from './jobs/applied-jobs/applied-jobs.component';
 import { AppliedJobElementComponent } from './jobs/applied-jobs/applied-job-element/applied-job-element.component';
+import { AddReviewDialogComponent } from './profiles/add-review-dialog/add-review-dialog.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { AppliedJobElementComponent } from './jobs/applied-jobs/applied-job-elem
     StatusFilterPipe,
     ResendInvitationComponent,
     AppliedJobsComponent,
-    AppliedJobElementComponent
+    AppliedJobElementComponent,
+    AddReviewDialogComponent
 
   ],
   imports: [

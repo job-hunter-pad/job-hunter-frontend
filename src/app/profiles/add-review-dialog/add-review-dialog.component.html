@@ -1,0 +1,22 @@
+<div mat-dialog-title class="dialog-title">Add Review to {{data.employerName}} ?</div>
+
+<div mat-dialog-content>
+    <div fxLayout="column" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
+            <div fxLayoutAlign="center center" class="rating-title">Rating</div>
+            <bar-rating [(rate)]="data.review.rating" [max]="5"></bar-rating>
+        </div>
+
+        <mat-form-field fxFlex>
+            <mat-label>Message</mat-label>
+            <textarea #message name="description" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"
+                matInput placeholder="Add your review message" [(ngModel)]="data.review.description"></textarea>
+            <mat-hint align="end">{{message.value.length}} / 800</mat-hint>
+        </mat-form-field>
+    </div>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end center">
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.review">Submit Review</button>
+</div>
