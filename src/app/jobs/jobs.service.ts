@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs/internal/observable/of';
 import { contentHeaders } from '../shared/headers'
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { JobOffer } from './jobOffer';
 
@@ -13,21 +11,17 @@ import { JobOffer } from './jobOffer';
 export class JobsService {
 
 	private createJobUrl = '/api/jobs/create';
-
 	private getJobAllOffersUrl = '/api/jobs';
-	private activeJobsUrl = '/api/applications/activeJobs';
-
-	private getNotCompletedJobOffersByEmployerIdUrl = '/api/jobs/getNotCompletedJobOffers/';
-
-	private getCompletedJobOffersByFreelancerIdUrl = "/api/applications/completedJobs/";
-
 	private rejectApplicationUrl = "/api/jobs/rejectApplication/";
-
 	private acceptApplicationUrl = "/api/jobs/acceptApplication/";
 
-	constructor(private http: HttpClient) { }
+	private activeJobsUrl = '/api/applications/activeJobs';
+	private getNotCompletedJobOffersByEmployerIdUrl = '/api/jobs/getNotCompletedJobOffers/';
+	private getCompletedJobOffersByFreelancerIdUrl = "/api/applications/completedJobs/";
+	private getInProgressJobsOfFreelancerUrl = '/api/applications/inProgressJobs/';
+	private completeJobUrl = '/api/applications/complete';
 
-	//TODO pe home page ne trebuie toate active jobs - faci functie si o apeezi in home page
+	constructor(private http: HttpClient) { }
 
 	getAllActiveJobs() {
 		return this.http.get<JobOffer[]>(this.activeJobsUrl,
@@ -52,13 +46,20 @@ export class JobsService {
 		);
 	}
 
-	getCompletedJobOffersByFreelancerId(id): Observable<JobOffer[]> {
-		return this.http.get<JobOffer[]>(
+	getCompletedJobsByFreelancerId(id) {
+		return this.http.get(
 			this.getCompletedJobOffersByFreelancerIdUrl + id,
 			{
 				headers: contentHeaders
 			}
 		);
+	}
+
+	getInProgressJobsOfFreelancer(freelancerId) {
+		return this.http.get(this.getInProgressJobsOfFreelancerUrl + freelancerId,
+			{
+				headers: contentHeaders
+			});
 	}
 
 	createJobOffer(jobOffer) {
@@ -81,6 +82,12 @@ export class JobsService {
 		return this.http.post(
 			this.rejectApplicationUrl + jobOfferId + "/" + applicationId,
 			JSON.stringify({ jobId: jobOfferId, applicationId: applicationId }), {
+			headers: contentHeaders
+		});
+	}
+
+	completeJob(freelancerId, jobId) {
+		return this.http.post(`${this.completeJobUrl}/${freelancerId}/${jobId}`, null, {
 			headers: contentHeaders
 		});
 	}

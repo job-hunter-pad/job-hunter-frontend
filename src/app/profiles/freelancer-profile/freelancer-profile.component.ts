@@ -89,7 +89,7 @@ export class FreelancerProfileComponent implements OnInit {
       this.ownProfile = true;
     }
 
-    this.jobService.getCompletedJobOffersByFreelancerId(this.id).subscribe(jobArray => {
+    this.jobService.getCompletedJobsByFreelancerId(this.id).subscribe((jobArray: any) => {
       this.jobs = jobArray; this.displayedJobs = jobArray;
       this.showJobs({ pageIndex: 0, pageSize: 2 });
     })
@@ -99,7 +99,12 @@ export class FreelancerProfileComponent implements OnInit {
     // console.log(event);
     var start = event.pageIndex * event.pageSize;
     var end = start + event.pageSize;
-    this.displayedJobs = this.jobs.slice(start, end)
+    if (this.jobs) {
+      this.displayedJobs = this.jobs.slice(start, end)
+    }
+    else {
+      this.displayedJobs = [];
+    }
   }
 
   createImageFromBlob(image: Blob) {

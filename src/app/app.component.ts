@@ -33,4 +33,8 @@ export class AppComponent {
     this.authService.logout();
   }
 
+  navigatoeToMyJobs() {
+    const userData = this.authService.getUserData();
+    this.router.navigate(['/appliedJobs', userData.userId]);
+  }
 }
