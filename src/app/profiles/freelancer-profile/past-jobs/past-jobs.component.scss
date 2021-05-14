@@ -7,3 +7,10 @@
 .attribute {
   font-weight: 550;
 }
+
+.employerName {
+  cursor: pointer;
+}
+.employerName:hover {
+  color: var(--primary-color);
+}

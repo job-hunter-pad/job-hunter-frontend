@@ -1,8 +1,10 @@
 <mat-card fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="30px">
     <mat-card-title class="card-title">{{jobValue.jobName}}</mat-card-title>
     <mat-card-content fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
-        <div>
-            <span class="attribute">Employer:</span> {{jobValue.employerName}}
+        <div fxLayout="row" fxLayoutAlign="start end">
+            <mat-card-subtitle class="subtitle-size">Employer:&nbsp; </mat-card-subtitle>
+            <mat-card-subtitle class="employerName subtitle-size" routerLink="/employerProfile/{{jobValue.employerId}}">
+                {{jobValue.employerName}} </mat-card-subtitle>
         </div>
         <div>
             <span class="attribute">Date:</span> {{jobValue.date}}

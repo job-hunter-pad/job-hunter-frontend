@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <mat-card class="parent-card">
-    <div class="job-title">
-      <mat-card-title> Available Jobs </mat-card-title>
+    <div class="job-title" fxlayout="row" fxLayoutAlign="center center" fxFlexFill>
+      <mat-card-title class="ttl"> Available Jobs </mat-card-title>
     </div>
     <mat-card-content>
       <div fxLayout="row" fxLayoutAlign="center center" class="search-bar">
@@ -10,7 +10,8 @@
           <mat-icon>search</mat-icon>
         </button>
       </div>
-      <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of displayedJobs | searchBar :searchText">
+      <div fxLayout="column" fxLayoutAlign="space-around stretch"
+        *ngFor="let job of displayedJobs | searchBar :searchText">
         <app-list-element class="job-item" [jobValue]="job"></app-list-element>
       </div>
       <mat-paginator #paginator [length]="jobs.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"
