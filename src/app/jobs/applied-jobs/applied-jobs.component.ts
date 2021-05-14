@@ -2,7 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { JobsService } from '../jobs.service';
 import { ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { AddReviewDialogComponent } from 'src/app/profiles/add-review-dialog/add-review-dialog.component';
+import { UserProfileService } from 'src/app/profiles/user-profile.service';
 
 @Component({
 	selector: 'app-applied-jobs',
@@ -20,7 +22,8 @@ export class AppliedJobsComponent implements OnInit {
 		private route: ActivatedRoute,
 		private jobsService: JobsService,
 		private authenticationService: AuthenticationService,
-		private snackBar: MatSnackBar) { }
+		private addReviewDialog: MatDialog,
+		private profileService: UserProfileService) { }
 
 	@ViewChild('profilePhotoFileInput') profilePhotoFileInput: ElementRef;
 
@@ -51,9 +54,35 @@ export class AppliedJobsComponent implements OnInit {
 	}
 
 	completeJob(job) {
-		this.jobsService.completeJob(this.id, job.id).subscribe(application => {
-			this.jobsService.getInProgressJobsOfFreelancer(this.id).subscribe((jobs: any) => {
-				this.inProgressJobs = jobs;
+
+		const dialogRef = this.addReviewDialog.open(AddReviewDialogComponent, {
+			data: {
+				employerName: job.employerName,
+				review: {
+					rating: 0,
+					description: ""
+				}
+			},
+			width: '500px'
+		});
+
+		dialogRef.afterClosed().subscribe((review) => {
+			this.jobsService.completeJob(this.id, job.id).subscribe(application => {
+				this.jobsService.getInProgressJobsOfFreelancer(this.id).subscribe((jobs: any) => {
+					this.inProgressJobs = jobs;
+				});
+			})
+
+			if (!review) {
+				return;
+			}
+			if (!review.description && !review.rating) {
+				return;
+			}
+
+			this.profileService.getFreelancerProfileById(this.id).subscribe(profile => {
+				this.profileService.addReview(job.employerId, profile.name, review.rating, review.description).subscribe(() => {
+				})
 			});
 		})
 	}
