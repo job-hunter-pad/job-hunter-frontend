@@ -68,7 +68,8 @@ export class JobOfferComponent implements OnInit {
               this.dialog.open(RenegotiatonComponent, {
                 width: '500px',
                 height: '200px',
-                data: null
+                data: null,
+                autoFocus: false
               });
             }
             else {

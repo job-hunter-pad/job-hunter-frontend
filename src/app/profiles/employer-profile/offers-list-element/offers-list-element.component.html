@@ -1,5 +1,5 @@
 <mat-card fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="3px">
-    <mat-card-title>
+    <mat-card-title class="title">
         {{job.jobName}}
     </mat-card-title>
 
@@ -30,7 +30,7 @@
         <div *ngIf="isStatusPending()" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" fxFlexFill>
             <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="5px">
                 <span class="attribute applic">Applications:</span>
-                <div *ngIf="!job.applicants">
+                <div *ngIf="noJobApplications()">
                     No applications pending
                 </div>
             </div>
@@ -47,19 +47,26 @@
                             Estimated completion time: {{application.estimatedProjectCompleteTime}}
                         </span>
                     </mat-expansion-panel-header>
-                    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+                    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px" fxFlexFill>
                         <div> {{application.message}} </div>
-                        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                            <button mat-stroked-button (click)="onRejectApplicationButtonClick(application.id)"
-                                fxLayout="row" fxLayoutAlign="space-between center">
-                                <mat-icon color="accent" aria-hidden="false" aria-label="Edit Icon">clear</mat-icon>
-                                <span>Reject application</span>
-                            </button>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill>
+                            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+                                <button mat-stroked-button (click)="onRejectApplicationButtonClick(application.id)"
+                                    fxLayout="row" fxLayoutAlign="space-between center">
+                                    <mat-icon color="accent" aria-hidden="false" aria-label="Edit Icon">clear</mat-icon>
+                                    <span>Reject application</span>
+                                </button>
 
-                            <button mat-stroked-button (click)="onAcceptApplicationButtonClick(application.id)"
+                                <button mat-stroked-button (click)="onAcceptApplicationButtonClick(application.id)"
+                                    fxLayout="row" fxLayoutAlign="space-between center">
+                                    <mat-icon color="primary" aria-hidden="false" aria-label="Edit Icon">done</mat-icon>
+                                    <span>Accept application</span>
+                                </button>
+                            </div>
+                            <button mat-raised-button routerLink="/freelancerProfile/{{application.freelancerId}}"
                                 fxLayout="row" fxLayoutAlign="space-between center">
-                                <mat-icon color="primary" aria-hidden="false" aria-label="Edit Icon">done</mat-icon>
-                                <span>Accept application</span>
+                                <mat-icon color="primary" aria-hidden="false" aria-label="Edit Icon">person</mat-icon>
+                                <span>Visit profile</span>
                             </button>
                         </div>
                     </div>
@@ -69,7 +76,10 @@
         </div>
         <div *ngIf="acceptedApplication" fxLayout="column" fxLayoutGap="10px">
             <div>
-                <span class="attribute">Freelancer:</span> {{acceptedApplication.freelancerName}}
+                <span class="attribute">Freelancer: </span>
+                <span class="freelancerName"
+                    routerLink="/freelancerProfile/{{acceptedApplication.freelancerId}}">{{acceptedApplication.freelancerName}}
+                </span>
             </div>
             <div>
                 <span class="attribute">Complete time estimation:</span>

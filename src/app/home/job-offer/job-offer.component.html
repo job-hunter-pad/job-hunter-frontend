@@ -1,19 +1,29 @@
-<div mat-dialog-actions class="close-button">
+<!-- <div mat-dialog-actions class="close-button">
   <button mat-icon-button mat-dialog-close>
     <mat-icon>cancel</mat-icon>
   </button>
-</div>
+</div> -->
 
 <div fxLayout="column" fxLayoutAlign="space-evenly">
   <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
 
-    <h1 mat-dialog-title> {{data.jobName}}</h1>
-    <mat-card-subtitle class="employerName" (click)="navigateToEmployerProfile()">Employer : {{data.employerName}}
-    </mat-card-subtitle>
-    <div mat-dialog-content class="job-description"> {{data.jobDescription}}</div>
-
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%">
+      <h1 mat-dialog-title> {{data.jobName}}</h1>
+      <span class="ui-helper-hidden-accessible"><button mat-icon-button color="accent" mat-dialog-close
+          aria-label="Example icon button with a close icon">
+          <mat-icon>close</mat-icon>
+        </button></span>
+    </mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="start end">
+      <mat-card-subtitle class="subtitle-size">Employer:&nbsp; </mat-card-subtitle>
+      <mat-card-subtitle class="employerName subtitle-size" routerLink="/employerProfile/{{data.employerId}}">
+        {{data.employerName}}
+      </mat-card-subtitle>
+    </div>
+    <div mat-dialog-content class="job-description"><span style="font-weight: 550;">Description:</span>
+      {{data.jobDescription}}</div>
     <div>
-      <p class="job-salary">Salary: {{data.hourSalaryAmount}} $ </p>
+      <p class="job-salary"><span style="font-weight: 550;">Salary:</span> {{data.hourSalaryAmount}} $ </p>
     </div>
 
     <form [formGroup]="applyForm" class="apply-form-form" class="apply-form" fxFlexFill fxLayout="column"
