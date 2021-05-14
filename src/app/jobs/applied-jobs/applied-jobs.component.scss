@@ -1,0 +1,23 @@
+.gen-info-div {
+    background: url("../../../assets/images/fundal1.jpg") repeat-y center;
+    background-position: center center;
+    min-height: calc(100vh - 113px);
+}
+
+.parent-card {
+    margin-left: 10vh;
+    margin-right: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.job-offers-list {
+    overflow-y: auto;
+    height: calc(100% - 46px);
+}
+
+.job-offers-title {
+    font-size: 1.8em;
+    text-align: center;
+    font-weight: 500;
+}

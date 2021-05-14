@@ -89,4 +89,15 @@ export class UserProfileService {
     return this.http.post(this.profileUrl + id + "/updatePhoto", formData);
   }
 
+
+  addReview(destinationUserId, reviewerName, rating, description) {
+    return this.http.post(this.profileUrl + destinationUserId + "/addReview",
+      JSON.stringify({
+        reviewerName: reviewerName,
+        description: description,
+        reviewScore: rating
+      }), {
+      headers: contentHeaders
+    });
+  }
 }

@@ -193,12 +193,14 @@
                     <mat-card-header>
                         <mat-card-title class="info-element-title">Past Jobs</mat-card-title>
                     </mat-card-header>
-                    <mat-card-content fxFlexFill>
+                    <mat-card-content fxLayout="column" style="height: 100%;width: 100%;"
+                        fxLayoutAlign="space-between stretch">
                         <div class="job-list" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="40px">
                             <app-past-jobs *ngFor="let job of displayedJobs" [jobValue]="job.jobOffer" fxFlex>
                             </app-past-jobs>
                         </div>
-                        <mat-paginator #paginator [length]="jobs.length" [pageSize]="2" (page)="showJobs($event)">
+                        <mat-paginator #paginator [length]="jobs ? jobs.length : 0" [pageSize]="2"
+                            (page)="showJobs($event)">
                         </mat-paginator>
                     </mat-card-content>
                 </div>

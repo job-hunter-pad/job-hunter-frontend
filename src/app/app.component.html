@@ -25,10 +25,10 @@
         <span class="nav-bar-text">Create Job Offer</span>
       </button>
 
-      <!-- <button mat-button *ngIf="userType == 'FREELANCER'">
+      <button mat-button *ngIf="userType == 'FREELANCER'" (click)="navigatoeToMyJobs()">
         <mat-icon class=" margin-right-8">assignment</mat-icon>
         <span class="nav-bar-text">My Jobs</span>
-      </button> -->
+      </button>
 
       <button mat-button (click)="onViewProfileButtonClick()">
         <mat-icon class="margin-right-8">person</mat-icon>

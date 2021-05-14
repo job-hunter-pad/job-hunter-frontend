@@ -55,6 +55,9 @@ import { OffersListElementComponent } from './profiles/employer-profile/offers-l
 import { StatusFilterPipe } from './profiles/employer-profile/status-filter.pipe';
 import { ResendInvitationComponent } from './authentication/resend-invitation/resend-invitation.component';
 import { AddReviewComponent } from './profiles/add-review/add-review.component';
+import { AppliedJobsComponent } from './jobs/applied-jobs/applied-jobs.component';
+import { AppliedJobElementComponent } from './jobs/applied-jobs/applied-job-element/applied-job-element.component';
+import { AddReviewDialogComponent } from './profiles/add-review-dialog/add-review-dialog.component';
 
 
 @NgModule({
@@ -77,7 +80,10 @@ import { AddReviewComponent } from './profiles/add-review/add-review.component';
     AddReviewComponent,
     OffersListElementComponent,
     StatusFilterPipe,
-    ResendInvitationComponent
+    ResendInvitationComponent,
+    AppliedJobsComponent,
+    AppliedJobElementComponent,
+    AddReviewDialogComponent
 
   ],
   imports: [
