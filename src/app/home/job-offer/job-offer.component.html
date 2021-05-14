@@ -1,9 +1,3 @@
-<!-- <div mat-dialog-actions class="close-button">
-  <button mat-icon-button mat-dialog-close>
-    <mat-icon>cancel</mat-icon>
-  </button>
-</div> -->
-
 <div fxLayout="column" fxLayoutAlign="space-evenly">
   <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
 
@@ -16,7 +10,7 @@
     </mat-dialog-actions>
     <div fxLayout="row" fxLayoutAlign="start end">
       <mat-card-subtitle class="subtitle-size">Employer:&nbsp; </mat-card-subtitle>
-      <mat-card-subtitle class="employerName subtitle-size" routerLink="/employerProfile/{{data.employerId}}">
+      <mat-card-subtitle class="employerName subtitle-size" (click)="navigateToEmployerProfile()">
         {{data.employerName}}
       </mat-card-subtitle>
     </div>
@@ -51,8 +45,9 @@
         </mat-form-field>
 
       </div>
-      <mat-spinner *ngIf="pushedButton"></mat-spinner>
-      <button [disabled]="pushedButton" mat-flat-button color="primary" (click)="openRenegotiation()">Apply</button>
+      <mat-spinner class="spinner" *ngIf="pushedButton"></mat-spinner>
+      <button class="apply" *ngIf="!pushedButton" mat-flat-button color="primary"
+        (click)="openRenegotiation()">Apply</button>
     </form>
 
   </div>

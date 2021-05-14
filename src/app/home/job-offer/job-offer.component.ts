@@ -7,6 +7,7 @@ import { HomeService } from '../home.service';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { UserProfileService } from 'src/app/profiles/user-profile.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-job-offer',
@@ -26,6 +27,7 @@ export class JobOfferComponent implements OnInit {
 
     @Inject(MAT_DIALOG_DATA) public data: JobOffer,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private homeService: HomeService,
     private authenticationService: AuthenticationService,
@@ -65,11 +67,11 @@ export class JobOfferComponent implements OnInit {
             this.pushedButton = false;
             // console.log(res);
             if (res) {
-              this.dialog.open(RenegotiatonComponent, {
-                width: '500px',
-                height: '200px',
-                data: null,
-                autoFocus: false
+              this.dialog.closeAll();
+              this.snackBar.open("Application sent!", "Close", {
+                duration: 5000,
+                horizontalPosition: "center",
+                verticalPosition: "bottom"
               });
             }
             else {

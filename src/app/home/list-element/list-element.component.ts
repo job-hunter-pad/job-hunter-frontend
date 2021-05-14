@@ -20,7 +20,7 @@ export class ListElementComponent implements OnInit {
   openDialog(): void {
     this.dialog.open(JobOfferComponent, {
       width: '800px',
-      height: '500px',
+      // height: '500px',
       data: this.jobValue,
       autoFocus: false
     });
