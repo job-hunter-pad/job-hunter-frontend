@@ -22,6 +22,7 @@ export class EmployerProfileComponent {
   employerProfile: EmployerProfile;
   id: string;
   jobOffers: JobOffer[] = [];
+  freelancerDisplayedJobOffers: JobOffer[] = [];
   searchText;
 
   constructor(
@@ -56,8 +57,8 @@ export class EmployerProfileComponent {
     }
 
     this.jobsService.getNotCompletedJobOffersByEmployerId(this.id).subscribe(jobArray => {
-      // console.log(jobArray);
       this.jobOffers = jobArray
+      this.extractFreelancerDisplay();
     })
   }
 
@@ -103,6 +104,14 @@ export class EmployerProfileComponent {
       // console.log(jobArray);
       this.jobOffers = jobArray
     })
+  }
+
+  private extractFreelancerDisplay() {
+    this.jobOffers.forEach((job) => {
+      if (job.status == "PENDING") {
+        this.freelancerDisplayedJobOffers.push(job);
+      }
+    });
   }
 
   private saveProfile() {

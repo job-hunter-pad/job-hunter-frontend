@@ -2,13 +2,12 @@
   <div class="job-dialog" fxLayout="column" fxLayoutAlign="space-between start">
 
     <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%">
-      <h1 mat-dialog-title> {{data.jobName}}</h1>
-      <span class="ui-helper-hidden-accessible"><button mat-icon-button color="accent" mat-dialog-close
-          aria-label="Example icon button with a close icon">
-          <mat-icon>close</mat-icon>
-        </button></span>
+      <mat-card-title class="title" mat-dialog-title> {{data.jobName}}</mat-card-title>
+      <button mat-icon-button color="accent" mat-dialog-close aria-label="Example icon button with a close icon">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-dialog-actions>
-    <div fxLayout="row" fxLayoutAlign="start end">
+    <div class="employer-div" fxLayout="row" fxLayoutAlign="start end">
       <mat-card-subtitle class="subtitle-size">Employer:&nbsp; </mat-card-subtitle>
       <mat-card-subtitle class="employerName subtitle-size" (click)="navigateToEmployerProfile()">
         {{data.employerName}}
