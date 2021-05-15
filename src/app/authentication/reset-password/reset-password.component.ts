@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 
@@ -18,7 +19,8 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthenticationService,
-    private router: Router, private route:ActivatedRoute,) { }
+    private router: Router, private route: ActivatedRoute, 
+    private snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -30,13 +32,18 @@ export class ResetPasswordComponent implements OnInit {
       validator: this.matchPasswordsValidator('password', 'confirmPassword')
     });
   }
-  
+
   onSubmit() {
     if (this.resetPasswordForm.valid) {
       this.token = this.route.snapshot.paramMap.get('token');
       this.authService.resetPassword(this.resetPasswordForm.get('password').value, this.token).subscribe(
         (res: any) => {
           if (res.success) {
+            this.snackBar.open("Reset Password Succesfully", "Close", {
+              duration: 2000,
+              horizontalPosition: "center",
+              verticalPosition: "top"
+            });
             this.router.navigate(['']);
           }
           else {
