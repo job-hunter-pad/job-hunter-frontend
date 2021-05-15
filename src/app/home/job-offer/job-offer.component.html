@@ -25,7 +25,7 @@
 
         <mat-form-field class="hours-field" appearance="outline">
           <mat-label>Hours</mat-label>
-          <input matInput placeholder="hours" formControlName="hours" required>
+          <input matInput type="number" placeholder="hours" formControlName="hours" required>
           <mat-error *ngIf="applyForm.get('hours').errors?.required"> You must complete this field
           </mat-error>
         </mat-form-field>
