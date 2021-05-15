@@ -1,4 +1,4 @@
-<mat-card *ngIf="application" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="3px">
+<mat-card fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="3px">
     <mat-card-title>
         {{job.jobName}}
     </mat-card-title>
@@ -26,7 +26,11 @@
 
     <mat-card-actions *ngIf="job.status == 'IN_PROGRESS'" fxLayout="row" fxLayoutAlign="space-around center"
         fxLayoutGap="20px">
-        <button class="complete-button" mat-raised-button color="primary" (click)="completeJobOffer()">Complete
+        <button class="complete-button" [disabled]="application && application.status =='COMPLETED'" mat-raised-button
+            color="primary" (click)="completeJobOffer()">Complete
             Job</button>
+        <div class="disable-message" *ngIf="application && application.status =='COMPLETED'">
+            Waiting for the employer to complete the payment
+        </div>
     </mat-card-actions>
 </mat-card>
