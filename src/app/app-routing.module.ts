@@ -12,6 +12,7 @@ import { AuthGuard } from './shared/auth-guard';
 import { AddReviewComponent } from './profiles/add-review/add-review.component';
 import { AppliedJobsComponent } from './jobs/applied-jobs/applied-jobs.component';
 import { Role } from './role';
+import {ResetPasswordComponent} from './authentication/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,12 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'resendInvitation',
+    path: 'sendResetPasswordEmail',
     component: ResendInvitationComponent
+  },
+  {
+    path: 'resetPassword/:token',
+    component: ResetPasswordComponent
   },
   {
     path: 'validateEmail/:token',

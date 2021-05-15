@@ -29,7 +29,7 @@
             <button id="login-button" (click)="onSubmit()" mat-raised-button color="primary">Login</button>
             
             <mat-error *ngIf="error" class="invalid-credentials-label" fxLayout="row" fxLayoutAlign="space-around center">{{errorMessage}}</mat-error>
-            <a class="forgot-password-label" [routerLink]="['/resendInvitation']" fxLayout="row" fxLayoutAlign="space-around center">Forgot your password?</a>
+            <a class="forgot-password-label" [routerLink]="['/sendResetPasswordEmail']" fxLayout="row" fxLayoutAlign="space-around center">Forgot your password?</a>
 
             <a class="sign-up-label" [routerLink]="['/register']" fxLayout="row" fxLayoutAlign="space-around center">New here? Sign up!</a>
 
