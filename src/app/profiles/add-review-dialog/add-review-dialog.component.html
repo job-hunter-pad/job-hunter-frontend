@@ -9,8 +9,9 @@
 
         <mat-form-field fxFlex>
             <mat-label>Message</mat-label>
-            <textarea #message name="description" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="10"
-                matInput placeholder="Add your review message" [(ngModel)]="data.review.description"></textarea>
+            <textarea #message name="description" maxlength="800" cdkTextareaAutosize cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="10" matInput placeholder="Add your review message"
+                [(ngModel)]="data.review.description"></textarea>
             <mat-hint align="end">{{message.value.length}} / 800</mat-hint>
         </mat-form-field>
     </div>

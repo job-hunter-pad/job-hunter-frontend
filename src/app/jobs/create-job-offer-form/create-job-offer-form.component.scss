@@ -1,5 +1,14 @@
 .create-job-form-card {
+  padding: 16px;
+  height: calc(100vh - 113px);
+  margin-top: 6.5vh;
+  // width: 40%;
+}
+
+@media (min-width: 1440px) {
+  .create-job-form-card {
     padding: 16px;
     height: calc(100vh - 113px);
-    // width: 40%;
+    margin-top: 0.5vh;
+  }
 }

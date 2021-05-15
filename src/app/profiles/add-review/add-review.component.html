@@ -1,1 +1,28 @@
-<p>add-review works!</p>
+<div fxLayou="row" fxLayoutAlign="center center">
+    <mat-card class="review-card" fxFlex="25" fxFlex.lt-sm="100" fxLayout="column" fxLayoutAlign="space-around start"
+        fxFlexFill>
+        <mat-card-header fxLayout="row" fxLayoutAlign="center center" fxFlexFill>
+            <mat-card-title>
+                Add review for {{freelancerName}} ?
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="width: 100%">
+            <div fxLayout="row" fxLayoutGap="16px" fxLayoutAlign="start center">
+                <div fxLayoutAlign="center center" class="rating-title">Rating</div>
+                <bar-rating [(ngModel)]="review.reviewScore" [max]="5"></bar-rating>
+            </div>
+
+            <mat-form-field fxFlexFill>
+                <mat-label style="font-size: 16px;">Message</mat-label>
+                <textarea #message name="description" maxlength="800" cdkTextareaAutosize cdkAutosizeMinRows="2"
+                    cdkAutosizeMaxRows="10" matInput placeholder="Add your review message"
+                    [(ngModel)]="review.description" fxFlexFill></textarea>
+                <mat-hint align="end">{{message.value.length}} / 800</mat-hint>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions class="actions" fxLayout="row" fxLayoutAlign="end center" fxFlexFill fxLayoutGap="10px">
+            <button mat-raised-button color="primary" routerLink="">Skip review</button>
+            <button mat-raised-button color="primary" (click)="addReview()">Sumbit review</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
