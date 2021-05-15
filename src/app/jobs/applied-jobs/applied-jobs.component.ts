@@ -46,7 +46,7 @@ export class AppliedJobsComponent implements OnInit {
 
 	getApplicationFromJob(job) {
 		for (let i = 0; i < job.applications.length; i++) {
-			if (job.applications[i].status == "ACCEPTED") {
+			if (job.applications[i].status == "ACCEPTED" || job.applications[i].status == "COMPLETED") {
 				return job.applications[i];
 			}
 		}

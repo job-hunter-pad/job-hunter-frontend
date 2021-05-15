@@ -159,7 +159,7 @@
             <mat-card class="parent-card" style="overflow-y: auto;" fxFlex>
                 <div *ngIf="!ownProfile">
                     <div *ngIf="!jobOffers || jobOffers.length == 0">
-                        No Job Offers
+                        No Active Job Offers
                     </div>
                     <div fxLayout="column" fxLayoutAlign="space-around stretch"
                         *ngFor="let job of freelancerDisplayedJobOffers">
@@ -169,7 +169,7 @@
 
                 <div *ngIf="ownProfile">
                     <div *ngIf="!jobOffers || jobOffers.length == 0">
-                        No Job Offers
+                        No Active Job Offers
                     </div>
                     <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let job of jobOffers">
                         <app-offers-list-element class="job-item" [job]="job" (applicationHandleEvent)="refreshPage()">
