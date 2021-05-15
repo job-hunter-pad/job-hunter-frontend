@@ -35,7 +35,7 @@ export class AddReviewComponent implements OnInit {
     }
 
     this.profileService.getEmployerProfileById(this.reviewerId).subscribe(employerProfile => {
-      if (employerProfile.description) {
+      if (employerProfile.name) {
         this.review.reviewerName = employerProfile.name;
       }
     });
