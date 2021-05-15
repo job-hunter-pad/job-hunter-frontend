@@ -1,0 +1,19 @@
+.review-card {
+  margin-top: 7.5vh;
+}
+
+@media (min-width: 1080px) {
+  .review-card {
+    margin-top: 14.5vh;
+  }
+}
+
+.actions {
+  margin-bottom: 5px !important;
+}
+
+.rating-title {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 550;
+}
