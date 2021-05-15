@@ -15,7 +15,10 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.router.events.subscribe((val) => {
-      this.userType = this.authService.getUserData().userType;
+      const userData = this.authService.getUserData();
+      if (userData) {
+        this.userType = userData.userType;
+      }
     })
   }
 
