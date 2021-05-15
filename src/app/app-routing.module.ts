@@ -11,6 +11,7 @@ import { FreelancerProfileComponent } from './profiles/freelancer-profile/freela
 import { AuthGuard } from './shared/auth-guard';
 import { AddReviewComponent } from './profiles/add-review/add-review.component';
 import { AppliedJobsComponent } from './jobs/applied-jobs/applied-jobs.component';
+import { Role } from './role';
 
 const routes: Routes = [
   {
@@ -47,13 +48,17 @@ const routes: Routes = [
   {
     path: 'createJob',
     component: CreateJobOfferFormComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Employer] }
   },
   {
     path: 'addReview/:reviewerId/:receiverId', component: AddReviewComponent, canActivate: [AuthGuard]
   },
   {
-    path: 'appliedJobs/:freelancerId', component: AppliedJobsComponent, canActivate: [AuthGuard]
+    path: 'appliedJobs/:freelancerId',
+    component: AppliedJobsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Freelancer] }
   }
 ];
 
