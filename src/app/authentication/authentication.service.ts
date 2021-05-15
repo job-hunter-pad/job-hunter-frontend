@@ -14,7 +14,8 @@ export class AuthenticationService {
 	private loginUrl = "/api/auth/login";
 	private registerUrl = "/api/auth/register";
 	private validateEmailUrl = '/api/auth/validateEmail';
-	private forgotPasswordEmailUrl = '/api/auth/forgotPassword';
+	private forgotPasswordEmailUrl = '/api/auth/sendResetPasswordEmail';
+	private resetPasswordUrl ='/api/resetPassword'
 
 	private jwtHelper = new JwtHelperService();
 
@@ -62,7 +63,15 @@ export class AuthenticationService {
 			headers: contentHeaders
 		});
 	}
-	
+
+	resetPassword(password, token){
+		return this.http.post(
+			this.resetPasswordUrl,
+			JSON.stringify({ password: password, account_key: token }), {
+			headers: contentHeaders
+		});
+	}
+
 	validateEmail(token) {
 		return this.http.post(
 			this.validateEmailUrl,

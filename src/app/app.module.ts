@@ -58,6 +58,7 @@ import { AddReviewComponent } from './profiles/add-review/add-review.component';
 import { AppliedJobsComponent } from './jobs/applied-jobs/applied-jobs.component';
 import { AppliedJobElementComponent } from './jobs/applied-jobs/applied-job-element/applied-job-element.component';
 import { AddReviewDialogComponent } from './profiles/add-review-dialog/add-review-dialog.component';
+import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { AddReviewDialogComponent } from './profiles/add-review-dialog/add-revie
     ResendInvitationComponent,
     AppliedJobsComponent,
     AppliedJobElementComponent,
-    AddReviewDialogComponent
+    AddReviewDialogComponent,
+    ResetPasswordComponent
 
   ],
   imports: [
