@@ -15,7 +15,7 @@ export class AuthenticationService {
 	private registerUrl = "/api/auth/register";
 	private validateEmailUrl = '/api/auth/validateEmail';
 	private forgotPasswordEmailUrl = '/api/auth/sendResetPasswordEmail';
-	private resetPasswordUrl ='/api/resetPassword'
+	private resetPasswordUrl ='/api/auth/resetPassword'
 
 	private jwtHelper = new JwtHelperService();
 
